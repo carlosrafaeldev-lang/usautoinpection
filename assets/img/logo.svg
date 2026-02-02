@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150">
+  <defs>
+    <style>
+      .cls-1 { fill: #003366; } /* Dark Blue */
+      .cls-2 { fill: #a51a1e; } /* Primary Red */
+      .cls-3 { fill: #ffffff; }
+      .cls-text-red { font-family: 'Arial Black', 'Inter', sans-serif; font-weight: 900; fill: #a51a1e; font-size: 58px; }
+      .cls-text-blue { font-family: 'Arial', 'Inter', sans-serif; font-weight: bold; fill: #003366; font-size: 18px; letter-spacing: 0.5px; }
+    </style>
+  </defs>
+
+  <!-- Shield Icon Group -->
+  <g transform="translate(10, 10) scale(0.8)">
+    <!-- Shield Outline -->
+    <path class="cls-1" d="M80,0 L160,20 V70 C160,115 80,150 80,150 C80,150 0,115 0,70 V20 L80,0 Z"/>
+    <!-- Shield Inner White -->
+    <path class="cls-3" d="M80,8 L150,26 V70 C150,110 80,140 80,140 C80,140 10,110 10,70 V26 L80,8 Z"/>
+    
+    <!-- Car Silhouette (Abstract) -->
+    <path class="cls-1" d="M30,80 Q30,50 80,50 Q130,50 130,80 L135,90 H25 L30,80 Z"/>
+    <rect class="cls-1" x="25" y="90" width="110" height="20" rx="5" />
+    <circle class="cls-3" cx="40" cy="100" r="6"/>
+    <circle class="cls-3" cx="120" cy="100" r="6"/>
+
+    <!-- Checkmark Overlay -->
+    <path class="cls-2" d="M100,50 L70,90 L50,70 L40,80 L70,120 L120,60 Z" stroke="white" stroke-width="3"/>
+  </g>
+
+  <!-- Text Group -->
+  <text x="145" y="85" class="cls-text-red">U.S. AUTO INSPECTION</text>
+  <text x="150" y="115" class="cls-text-blue">INSPECT BEFORE YOU INVEST!</text>
+</svg>
