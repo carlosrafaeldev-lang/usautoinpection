@@ -30,6 +30,7 @@
         phone: '',        // Phone call click
         sms: '',          // Text message click
         vinReview: '',    // VIN Review Square click
+        diyGuide: '',     // DIY Used Car Inspection Guide Square click
         bookClick: '',    // Book button click before form submit
         sampleReport: '', // Sample report clicks, usually secondary only
         reviews: '',      // Google reviews click, usually secondary only
@@ -55,6 +56,7 @@
         phone: 150,
         sms: 125,
         vinReview: 25,
+        diyGuide: 10,
         bookClick: 20,
         sampleReport: 5,
         reviews: 5,
@@ -117,7 +119,7 @@
         gtag('event', actionName, params);
 
         // GA4 recommended lead event for high-intent actions.
-        if (['booking', 'phone', 'sms', 'vinReview', 'email'].includes(labelKey)) {
+        if (['booking', 'phone', 'sms', 'vinReview', 'diyGuide', 'email'].includes(labelKey)) {
           gtag('event', 'generate_lead', {
             currency: 'USD',
             value: leadValue(labelKey),
@@ -128,7 +130,7 @@
 
         sendGoogleAdsConversion(labelKey, params);
 
-        if (window.fbq && ['booking', 'phone', 'sms', 'vinReview'].includes(labelKey)) {
+        if (window.fbq && ['booking', 'phone', 'sms', 'vinReview', 'diyGuide'].includes(labelKey)) {
           fbq('track', 'Lead', {
             content_name: actionName,
             value: leadValue(labelKey),
@@ -136,7 +138,7 @@
           });
         }
 
-        if (window.uetq && ['booking', 'phone', 'sms', 'vinReview'].includes(labelKey)) {
+        if (window.uetq && ['booking', 'phone', 'sms', 'vinReview', 'diyGuide'].includes(labelKey)) {
           window.uetq.push('event', actionName, {
             event_category: 'lead_generation',
             event_label: labelKey,
@@ -1748,6 +1750,21 @@
                   <li><span class="check">✓</span><span>Red flag summary</span></li>
                 </ul>
                 <p style="margin-top: 24px;"><a class="btn btn-secondary" style="width: 100%;" href="https://square.link/u/mABzJFfT" target="_blank" rel="noopener noreferrer" onclick="trackAction('vin_review_click', 'vinReview')">Order VIN Review</a></p>
+              </div>
+
+              <div class="card">
+                <h3>DIY Used Car Inspection Guide</h3>
+                <p>A downloadable step-by-step guide created by U.S. Auto Inspection to help used car buyers perform a basic visual inspection themselves before purchasing a vehicle.</p>
+                <div class="price price-red">$10</div>
+                <ul class="feature-list">
+                  <li><span class="check">✓</span><span>Exterior and interior checklist</span></li>
+                  <li><span class="check">✓</span><span>Engine bay and fluid inspection tips</span></li>
+                  <li><span class="check">✓</span><span>Tire, brake, and test drive warning signs</span></li>
+                  <li><span class="check">✓</span><span>Common red flags before buying</span></li>
+                  <li><span class="check">✓</span><span>Buyer-friendly final decision checklist</span></li>
+                </ul>
+                <p class="muted-note">Digital product delivered by email after payment.</p>
+                <p style="margin-top: 24px;"><a class="btn btn-secondary" style="width: 100%;" href="https://square.link/u/uy7WggpM" target="_blank" rel="noopener noreferrer" onclick="trackAction('diy_guide_click', 'diyGuide')">Buy DIY Guide – $10</a></p>
               </div>
             </div>
             <div class="card" style="margin-top: 24px; background: #ECFDF5; border-color: #BBF7D0;">
