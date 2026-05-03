@@ -33,6 +33,7 @@
         bookClick: '',    // Book button click before form submit
         sampleReport: '', // Sample report clicks, usually secondary only
         reviews: '',      // Google reviews click, usually secondary only
+        photos: '',       // Real inspection photos click, usually secondary only
         email: ''         // Email click, usually secondary only
       }
     };
@@ -57,6 +58,7 @@
         bookClick: 20,
         sampleReport: 5,
         reviews: 5,
+        photos: 5,
         email: 25,
         formStart: 10,
         engagement: 1
@@ -1574,6 +1576,7 @@
         <a href="#how-it-works">How It Works</a>
         <a href="#pricing">Pricing</a>
         <a href="#sample-reports">Samples</a>
+        <a href="https://share.google/63l7Vx6ZNUXRr24O3" target="_blank" rel="noopener noreferrer" onclick="trackAction('real_inspection_photos_click_nav', 'photos', { cta_location: 'desktop_nav' })">Real Photos</a>
         <a href="#reviews">Reviews</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -1593,6 +1596,7 @@
       <a href="#how-it-works" onclick="toggleMobileMenu(false)">How It Works</a>
       <a href="#pricing" onclick="toggleMobileMenu(false)">Pricing</a>
       <a href="#sample-reports" onclick="toggleMobileMenu(false)">Sample Reports</a>
+      <a href="https://share.google/63l7Vx6ZNUXRr24O3" target="_blank" rel="noopener noreferrer" onclick="trackAction('real_inspection_photos_click_mobile_menu', 'photos', { cta_location: 'mobile_menu' }); toggleMobileMenu(false)">Real Inspection Photos</a>
       <a href="#reviews" onclick="toggleMobileMenu(false)">Reviews</a>
       <a href="#faq" onclick="toggleMobileMenu(false)">FAQ</a>
       <a href="tel:+12396725543" onclick="trackAction('phone_click_mobile_menu', 'phone')">Call (239) 672-5543</a>
@@ -1618,6 +1622,7 @@
     
               <div class="hero-actions">
                 <a class="btn btn-primary book-attention" href="#contact" onclick="trackBookClick('hero')">Book Pre-Purchase Inspection</a>
+                <a class="btn btn-secondary" href="https://share.google/63l7Vx6ZNUXRr24O3" target="_blank" rel="noopener noreferrer" onclick="trackAction('real_inspection_photos_click_hero', 'photos', { cta_location: 'hero' })">View Real Inspection Photos</a>
                 <a class="btn btn-outline-dark" href="#sample-reports" onclick="trackAction('sample_reports_hero_click', 'sampleReport')">View Sample Reports</a>
               </div>
     
@@ -1780,6 +1785,7 @@
               <span style="color: #475569; font-weight: 850;">Local inspection service focused on Cape Coral & Fort Myers</span>
             </div>
             <p><a class="btn btn-secondary" href="https://share.google/8AyTeP0okkOMOxj5y" target="_blank" rel="noopener noreferrer" onclick="trackAction('google_reviews_click', 'reviews')">View Our Google Reviews</a></p>
+            <p style="margin-top: 12px;"><a class="btn btn-outline-dark" href="https://share.google/63l7Vx6ZNUXRr24O3" target="_blank" rel="noopener noreferrer" onclick="trackAction('real_inspection_photos_click_reviews_section', 'photos', { cta_location: 'reviews_section' })">View Real Inspection Photos</a></p>
             <div class="reviews-social">
               <strong>Follow us for real inspections, photos, reports, and buyer tips</strong>
               <div class="reviews-social-row" aria-label="Follow U.S. Auto Inspection on social media">
