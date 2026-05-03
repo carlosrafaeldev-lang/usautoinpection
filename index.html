@@ -1,973 +1,1251 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16919642557"></script>
-    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'AW-16919642557'); </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpg" href="assets/img/logo.jpg">
-    <title>Pre-Purchase Used Car Inspection Fort Myers & Cape Coral | U.S. Auto Inspection</title>
-    <meta name="description"
-        content="Independent mobile pre-purchase used car inspections in Fort Myers, Cape Coral, and Southwest Florida. Get photos, diagnostic scan, road test, and a digital report before buying.">
+  <title>U.S. Auto Inspection | Pre-Purchase Used Car Inspections</title>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.usautoinspection.com/">
-    <meta property="og:title" content="Pre-Purchase Used Car Inspection Fort Myers & Cape Coral | U.S. Auto Inspection">
-    <meta property="og:description"
-        content="Independent used car inspections with photos, diagnostic scan report, road test, and detailed digital findings before you buy.">
-    <meta property="og:image"
-        content="https://static.wixstatic.com/media/28d852_07c278cf0ece4064bbfbc035b02d71f7%7Emv2.png/v1/fit/w_2500,h_1330,al_c/28d852_07c278cf0ece4064bbfbc035b02d71f7%7Emv2.png">
-    <meta property="og:site_name" content="U.S. Auto Inspection">
+  <meta
+    name="description"
+    content="Mobile pre-purchase used car inspections in Fort Myers, Cape Coral, and Southwest Florida. Detailed reports, photos, diagnostic scan, and buyer-friendly explanations."
+  />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --navy: #071b34;
+      --navy-2: #0b2748;
+      --blue: #0d6efd;
+      --blue-dark: #074eb6;
+      --red: #c92424;
+      --gold: #f5b400;
+      --white: #ffffff;
+      --off-white: #f7f9fc;
+      --text: #152033;
+      --muted: #617084;
+      --border: rgba(7, 27, 52, 0.12);
+      --shadow: 0 18px 50px rgba(7, 27, 52, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+    }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- Tailwind CSS -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <style>
-        /* Custom Styles for things Tailwind can't easily capture or specifics */
-        .hero-bg {
-            background-image: linear-gradient(rgba(46, 52, 54, 0.8), rgba(46, 52, 54, 0.7)), url('assets/img/hero-bg.png');
-            background-size: cover;
-            background-position: center;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        details>summary {
-            list-style: none;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      line-height: 1.55;
+    }
 
-        details>summary::-webkit-details-marker {
-            display: none;
-        }
-    </style>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-shell {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .top-alert {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 10px 16px;
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+
+    .header-inner {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(7, 27, 52, 0.10);
+    }
+
+    .brand-text h1 {
+      color: var(--navy);
+      font-size: clamp(24px, 3vw, 36px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -1px;
+    }
+
+    .brand-text p {
+      color: var(--blue-dark);
+      font-size: clamp(15px, 1.7vw, 20px);
+      font-weight: 900;
+      margin-top: 6px;
+    }
+
+    .social-under-slogan {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .social-under-slogan a {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: var(--blue-dark);
+      background: rgba(13, 110, 253, 0.08);
+      border: 1px solid rgba(13, 110, 253, 0.15);
+      font-weight: 900;
+      font-size: 16px;
+      transition: 0.2s ease;
+    }
+
+    .social-under-slogan a:hover {
+      background: var(--blue);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--navy);
+      font-weight: 850;
+      font-size: 15px;
+    }
+
+    .desktop-nav a:hover {
+      color: var(--blue);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: var(--radius-pill);
+      padding: 14px 22px;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 14px 30px rgba(201, 36, 36, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 35px rgba(201, 36, 36, 0.32);
+    }
+
+    .btn-secondary {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: 0 14px 30px rgba(7, 27, 52, 0.18);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: var(--navy-2);
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--navy);
+      border: 1px solid rgba(7, 27, 52, 0.15);
+      box-shadow: 0 12px 28px rgba(7, 27, 52, 0.08);
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-2px);
+      color: var(--blue-dark);
+      box-shadow: 0 18px 35px rgba(7, 27, 52, 0.12);
+    }
+
+    .hero {
+      position: relative;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(13, 110, 253, 0.22), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #edf5ff 44%, #f7f9fc 100%);
+      padding: 70px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 2.1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h2 {
+      color: var(--navy);
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -3px;
+      font-weight: 950;
+      max-width: 720px;
+    }
+
+    .hero h2 span {
+      color: var(--blue-dark);
+    }
+
+    .hero-copy {
+      margin-top: 24px;
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--muted);
+      max-width: 660px;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: var(--radius-pill);
+      padding: 10px 14px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--navy);
+      font-weight: 850;
+      box-shadow: 0 10px 24px rgba(7, 27, 52, 0.06);
+    }
+
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .trust-badge {
+      background: #f4f8ff;
+      border: 1px solid rgba(13, 110, 253, 0.14);
+      color: var(--blue-dark);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-weight: 950;
+      text-align: center;
+      min-width: 130px;
+    }
+
+    .google-review-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid rgba(7, 27, 52, 0.12);
+      border-radius: var(--radius-pill);
+      padding: 16px 24px;
+      font-size: clamp(24px, 3.1vw, 42px);
+      line-height: 1.05;
+      font-weight: 950;
+      letter-spacing: -1.5px;
+      box-shadow: 0 16px 38px rgba(7, 27, 52, 0.10);
+      transition: 0.2s ease;
+      margin: 18px 0 22px;
+    }
+
+    .google-review-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(7, 27, 52, 0.16);
+    }
+
+    .review-star {
+      color: var(--gold);
+      font-size: 1.1em;
+      text-shadow: 0 4px 14px rgba(245, 180, 0, 0.30);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .mini-card {
+      background: #f4f8ff;
+      border: 1px solid rgba(13, 110, 253, 0.12);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .mini-card strong {
+      color: var(--navy);
+      display: block;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      max-width: 780px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .section-title h2 {
+      color: var(--navy);
+      font-size: clamp(34px, 4.5vw, 56px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -2px;
+    }
+
+    .section-title p {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card,
+    .receive-card,
+    .process-card,
+    .booking-card,
+    .quote-card,
+    .sample-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      box-shadow: 0 14px 34px rgba(7, 27, 52, 0.07);
+    }
+
+    .service-card h3,
+    .receive-card h3,
+    .process-card h3,
+    .sample-card h3 {
+      color: var(--navy);
+      font-size: 22px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      font-weight: 950;
+    }
+
+    .service-card p,
+    .receive-card p,
+    .process-card p,
+    .sample-card p {
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 650;
+    }
+
+    .icon-bubble {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(13, 110, 253, 0.10);
+      border: 1px solid rgba(13, 110, 253, 0.16);
+      color: var(--blue-dark);
+      border-radius: 18px;
+      font-size: 25px;
+      margin-bottom: 16px;
+      font-weight: 950;
+    }
+
+    .receive-section {
+      background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
+    }
+
+    .receive-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .receive-card {
+      min-height: 210px;
+    }
+
+    .samples-section {
+      background: #ffffff;
+    }
+
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .sample-card {
+      text-align: center;
+    }
+
+    .sample-card .btn {
+      margin-top: 18px;
+      width: 100%;
+    }
+
+    .booking-section {
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+    }
+
+    .booking-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .booking-info h2 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -2px;
+      font-weight: 950;
+      margin-bottom: 18px;
+    }
+
+    .booking-info p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 18px;
+      max-width: 620px;
+    }
+
+    .booking-card {
+      color: var(--text);
+    }
+
+    .booking-card .eyebrow {
+      margin-bottom: 14px;
+    }
+
+    .booking-card h2 {
+      color: var(--navy);
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -2px;
+      font-weight: 950;
+      margin-bottom: 18px;
+    }
+
+    .booking-text {
+      color: var(--muted);
+      font-size: 19px;
+      font-weight: 650;
+      margin-bottom: 24px;
+    }
+
+    .booking-steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    .booking-step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border-radius: 18px;
+      background: #f4f8ff;
+      border: 1px solid rgba(13, 110, 253, 0.12);
+    }
+
+    .booking-step span {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(13, 110, 253, 0.12);
+      color: var(--blue-dark);
+      font-weight: 950;
+    }
+
+    .booking-step strong {
+      color: var(--blue-dark);
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .form-section {
+      background: #ffffff;
+    }
+
+    .quote-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .quote-card h2 {
+      color: var(--navy);
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1;
+      letter-spacing: -1.8px;
+      font-weight: 950;
+      margin-bottom: 14px;
+    }
+
+    .quote-card p {
+      color: var(--muted);
+      font-size: 17px;
+      font-weight: 650;
+      margin-bottom: 18px;
+    }
+
+    .form-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid rgba(7, 27, 52, 0.16);
+      border-radius: 16px;
+      padding: 14px 15px;
+      font-size: 16px;
+      outline: none;
+      font-family: inherit;
+      background: #fbfcff;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.10);
+      background: #ffffff;
+    }
+
+    textarea {
+      min-height: 122px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+      font-weight: 650;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 16px;
+      font-size: 17px;
+      padding: 16px 22px;
+    }
+
+    .footer {
+      background: #061427;
+      color: rgba(255, 255, 255, 0.82);
+      padding: 42px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .footer h3,
+    .footer h4 {
+      color: var(--white);
+      margin-bottom: 10px;
+      font-weight: 950;
+    }
+
+    .footer p,
+    .footer a {
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 650;
+    }
+
+    .footer a:hover {
+      color: var(--white);
+    }
+
+    .mobile-call-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 120;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 10px 12px;
+      box-shadow: 0 -12px 30px rgba(7, 27, 52, 0.12);
+      gap: 10px;
+    }
+
+    .mobile-call-bar a {
+      flex: 1;
+      padding: 13px 10px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 950;
+      color: var(--white);
+    }
+
+    .mobile-call-bar .call {
+      background: var(--navy);
+    }
+
+    .mobile-call-bar .request {
+      background: var(--red);
+    }
+
+    @media (max-width: 980px) {
+      .desktop-nav,
+      .header-actions {
+        display: none;
+      }
+
+      .header-inner {
+        justify-content: center;
+      }
+
+      .hero-grid,
+      .booking-wrap,
+      .quote-wrap,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards-grid,
+      .receive-grid,
+      .samples-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding: 48px 0 40px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        padding-bottom: 74px;
+      }
+
+      .brand-wrap {
+        width: 100%;
+      }
+
+      .brand-logo {
+        width: 64px;
+        height: 64px;
+      }
+
+      .brand-text h1 {
+        font-size: 25px;
+      }
+
+      .brand-text p {
+        font-size: 15px;
+      }
+
+      .social-under-slogan a {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+
+      .hero h2 {
+        letter-spacing: -2px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .cards-grid,
+      .receive-grid,
+      .samples-grid,
+      .mini-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .google-review-btn {
+        font-size: 27px;
+        padding: 14px 18px;
+      }
+
+      .mobile-call-bar {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 
-<body class="font-sans text-gray-800 antialiased bg-gray-50">
-    <!-- Header -->
-    <header class="fixed w-full z-50 bg-white backdrop-blur-sm shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="flex items-center gap-2">
-                        <img class="h-16 w-auto" src="assets/img/logo.jpg" alt="U.S. Auto Inspection - Pre-Purchase Used Car Inspection Fort Myers and Cape Coral">
-                        <span class="font-bold text-xl tracking-tight hidden sm:block text-dark">U.S. AUTO
-                            INSPECTION</span>
-                    </a>
-                </div>
+<body>
+  <div class="page-shell">
+    <div class="top-alert">
+      Request First. Pay When Ready. No Upfront Payment To Submit Your Request.
+    </div>
 
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-8 items-center">
-                    <a href="#benefits" class="text-gray-600 hover:text-primary font-medium transition">Why Choose Us</a>
-                    <a href="#services" class="text-gray-600 hover:text-primary font-medium transition">Inspection Services</a>
-                    <a href="#faq" class="text-gray-600 hover:text-primary font-medium transition">FAQ</a>
-                    <a href="tel:+12396725543" class="text-gray-900 font-semibold hover:text-primary transition">(239)
-                        672-5543</a>
-                    <a href="#contact"
-                        class="bg-primary text-white px-6 py-2.5 rounded-full font-semibold hover:bg-red-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Book Used Car Inspection</a>
-                </nav>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="brand-wrap" aria-label="U.S. Auto Inspection home">
+          <img
+            class="brand-logo"
+            src="assets/img/logo.jpg"
+            alt="U.S. Auto Inspection logo"
+          />
 
-                <!-- Mobile Phone Number & Social Icons -->
-                <div class="md:hidden flex flex-col items-center mr-4">
-                    <a href="tel:+12396725543"
-                        class="flex items-center text-primary font-bold hover:text-red-800 transition">
-                        <svg class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                        </svg>
-                        <span class="text-sm">(239) 672-5543</span>
-                    </a>
-                    <div class="flex items-center gap-1 mt-1">
-                        <a href="https://www.facebook.com/share/181r9mqNHq/" target="_blank" class="p-2 hover:opacity-80 transition">
-                            <svg class="h-4 w-4" fill="#1877F2" viewBox="0 0 24 24">
-                                <path
-                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/usautoinspection?utm_source=qr&igsh=bHdtbXFyNXN3M2t3" target="_blank"
-                            class="p-2 hover:opacity-80 transition">
-                            <svg class="h-4 w-4" fill="#E4405F" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg>
-                        </a>
-                        <a href="https://youtube.com/@u.s.autoinspection?si=hGh1cDkm_7oKqK0X" target="_blank"
-                            class="p-2 hover:opacity-80 transition">
-                            <svg class="h-4 w-4" fill="#FF0000" viewBox="0 0 24 24">
-                                <path
-                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+          <div class="brand-text">
+            <h1>U.S. Auto Inspection</h1>
+            <p>Inspect Before You Invest!</p>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none p-2">
-                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
+            <div class="social-under-slogan" aria-label="Social media links">
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+              <a href="https://www.instagram.com/usautoinspection" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎</a>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>
+              <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">♪</a>
             </div>
-        </div>
+          </div>
+        </a>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#benefits"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">Why
-                    Choose Us</a>
-                <a href="#services"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">Inspection Services</a>
-                <a href="#faq"
-                    class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md">FAQ</a>
-                <a href="tel:+12396725543" class="block px-3 py-3 text-base font-bold text-gray-900">Call: (239)
-                    672-5543</a>
-                <a href="#contact"
-                    class="block w-full text-center mt-4 bg-primary text-white px-6 py-3 rounded-lg font-bold shadow-md">Book Inspection</a>
-                    Now</a>
-                <div class="flex gap-6 justify-center mt-6 pt-4 border-t border-gray-100">
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/share/181r9mqNHq/" target="_blank"
-                        class="text-gray-400 hover:text-primary transition">
-                        <span class="sr-only">Facebook</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                        </svg>
-                    </a>
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com/usautoinspection?utm_source=qr&igsh=bHdtbXFyNXN3M2t3"
-                        target="_blank" class="text-gray-400 hover:text-primary transition">
-                        <span class="sr-only">Instagram</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <!-- YouTube -->
-                    <a href="https://youtube.com/@u.s.autoinspection?si=hGh1cDkm_7oKqK0X" target="_blank"
-                        class="text-gray-400 hover:text-primary transition">
-                        <span class="sr-only">YouTube</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="#receive">What You Receive</a>
+          <a href="#samples">Sample Reports</a>
+          <a href="#process">How It Works</a>
+          <a href="#booking">Booking</a>
+          <a href="#request">Request Inspection</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-secondary" href="tel:2396725543">Call/Text 239-672-5543</a>
+          <a class="btn btn-primary" href="#request">Request Inspection</a>
         </div>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-bg text-white">
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center lg:text-left">
-            <div class="lg:w-2/3">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                    Buy With <span class="text-red-500">Confidence</span>.<br> Avoid Costly Surprises.
-                </h1>
-                <p class="text-xl sm:text-2xl text-gray-200 mb-8 font-light max-w-2xl mx-auto lg:mx-0">
-                    Professional Pre-Purchase Used Car Inspections in Cape Coral & Fort Myers. We uncover hidden
-                    problems before you sign the deal.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="#contact"
-                        class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-lg font-bold rounded-lg text-white bg-primary hover:bg-red-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        Book Pre-Purchase Inspection
-                    </a>
-                    <a href="#benefits"
-                        class="inline-flex justify-center items-center px-8 py-4 border-2 border-white/30 text-lg font-semibold rounded-lg text-white hover:bg-white/10 transition backdrop-blur-sm">
-                        View Sample Inspection Reports
-                    </a>
-                </div>
-                <div
-                    class="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm sm:text-base text-gray-300">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
-                            </path>
-                        </svg>
-                        <span>★ 5.0 Google Rating</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
-                            </path>
-                        </svg>
-                        <span>Mobile Service</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Mobile Pre-Purchase Used Car Inspections</p>
 
-        <!-- Trust Badge / Floating Element could go here -->
-    </section>
+            <h2>
+              Buy with confidence before you <span>send the money.</span>
+            </h2>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-2">Why Choose U.S. Auto Inspection?
-                </h2>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900">Comprehensive Vehicle Analysis</h3>
-                <p class="mt-4 text-xl text-gray-500">We don't just kick the tires. We provide deep insights into the
-                    vehicle's true condition.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition border border-gray-100 group">
-                    <div
-                        class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                        <svg class="w-8 h-8 text-primary group-hover:text-white" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">CARFAX Report</h4>
-                    <p class="text-gray-600 leading-relaxed">
-                        Detailed history including accidents, service records, and ownership history to rule out major
-                        red flags.
-                    </p>
-                    <a href="assets/reports/0451f5_140124144f024da4abaf13172454190e.pdf" target="_blank"
-                        class="inline-block mt-4 text-primary font-semibold hover:underline">View Sample
-                        &rarr;</a>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition border border-gray-100 group">
-                    <div
-                        class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                        <svg class="w-8 h-8 text-primary group-hover:text-white" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Diagnostic Scan</h4>
-                    <p class="text-gray-600 leading-relaxed">
-                        Professional OBD2 scan to identify engine codes, transmission issues, and hidden system faults.
-                    </p>
-                    <a href="assets/reports/0451f5_4caab39c567a4b8fa15df9f32d1baac6.pdf" target="_blank"
-                        class="inline-block mt-4 text-primary font-semibold hover:underline">View Sample
-                        &rarr;</a>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition border border-gray-100 group">
-                    <div
-                        class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-                        <svg class="w-8 h-8 text-primary group-hover:text-white" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                            </path>
-                        </svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-3">Professional Multi-Point Inspection Report</h4>
-                    <p class="text-gray-600 leading-relaxed">
-                        Thorough physical check of fluids, tires, brakes, suspension, body, interior, and safety
-                        features.
-                    </p>
-                    <a href="assets/reports/Multi-Point Inspection Report 2024 Porsche 911 Tur_260208_154944.pdf"
-                        target="_blank" class="inline-block mt-4 text-primary font-semibold hover:underline">View Sample
-                        &rarr;</a>
-                </div>
-
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Content / About Section -->
-    <section class="py-20 bg-dark text-gray-100 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10"
-            style="background-image: url('assets/img/inspection-overlay.jpg'); background-size: cover; background-position: center;">
-        </div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                <div class="mb-10 lg:mb-0">
-                    <img class="rounded-2xl shadow-2xl border-4 border-gray-700"
-                        src="assets/img/inspection-mechanic.jpg" alt="Mechanic inspecting engine">
-                </div>
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">More Than Just an Inspection</h2>
-                    <p class="text-lg text-gray-300 mb-6 leading-relaxed">
-                        Purchasing a used vehicle is a significant investment. Without a professional eye, you risk
-                        buying a car with hidden mechanical issues, frame damage, or a poor maintenance history.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">
-                            <span
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-primary flex items-center justify-center mt-1 mr-3">
-                                <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                            </span>
-                            <span class="text-gray-300">We come to you: Dealerships, private sellers, or your
-                                home.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-primary flex items-center justify-center mt-1 mr-3">
-                                <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                            </span>
-                            <span class="text-gray-300">Digital reports delivered within 2 hours of inspection.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span
-                                class="flex-shrink-0 h-6 w-6 rounded-full bg-primary flex items-center justify-center mt-1 mr-3">
-                                <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                            </span>
-                            <span class="text-gray-300">Friendly courtesy call to explain findings simply.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section id="reviews" class="py-20 bg-gray-50 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <!-- Elfsight Platform Script -->
-                <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-
-                <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-2">What Our Customers Say</h2>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900">Trusted by Hundreds of Buyers</h3>
-                <div class="flex justify-center items-center mt-4 text-yellow-500 gap-1">
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                    <span class="text-gray-900 font-bold ml-2 text-lg">5.0</span>
-                </div>
-            </div>
-
-            <!-- STATIC REVIEWS -->
-            <!-- Note: Replace this entire grid with the Elfsight widget code below for dynamic updates -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 relative">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
-                            M</div>
-                        <div class="ml-3">
-                            <h4 class="font-bold text-gray-900">Michael Vazquez</h4>
-                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
-                        </div>
-                        <img src="assets/img/google-logo.svg" alt="Google" class="h-5 w-5 ml-auto opacity-70">
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        "They were on time, thorough, patient and very detailed. I would highly recommend Maikel to
-                        anyone out there. I hired another company a few months ago... By far, these guys are the way to
-                        go!"
-                    </p>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 relative">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
-                            N</div>
-                        <div class="ml-3">
-                            <h4 class="font-bold text-gray-900">Nadia</h4>
-                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
-                        </div>
-                        <img src="assets/img/google-logo.svg" alt="Google" class="h-5 w-5 ml-auto opacity-70">
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        "As a first time car buyer, Maikel was a huge help. I called him in the evening and the next day
-                        he was at the dealership doing the inspection. Within a couple hours I had all the information I
-                        needed..."
-                    </p>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 relative">
-                    <div class="flex items-center mb-4">
-                        <div
-                            class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
-                            T</div>
-                        <div class="ml-3">
-                            <h4 class="font-bold text-gray-900">Trisha Lawrence</h4>
-                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
-                        </div>
-                        <img src="assets/img/google-logo.svg" alt="Google" class="h-5 w-5 ml-auto opacity-70">
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        "He did a very thorough job and took pictures under the truck too... I would highly recommend
-                        this service if you are looking at buying a car, take it here for an inspection first."
-                    </p>
-                </div>
-            </div>
-            <div class="mt-12 text-center">
-                <a href="https://www.google.com/search?sca_esv=e2bc02e7b0c20616&sxsrf=ANbL-n7EgcmPdzigvbdmsUCt2AB1gOVJBQ:1770061699686&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOcocbvKECBts5gHtEYfIFa5m0VzvDdPjcZN99qXHMUv0Bk5sn30TQRQCXaNOXUTY8jsmTTnEmPaqAAYChGj5V2Fxya9e75jT9_d6Og_Km2r3h1jIzA%3D%3D&q=U.S.+Auto+Inspection+Reviews&sa=X&ved=2ahUKEwinnNzWybuSAxVdlmoFHbmTDhYQ0bkNegQIMhAF&biw=1439&bih=669&dpr=2&aic=0"
-                    target="_blank"
-                    class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition">
-                    <img src="assets/img/google-logo.svg" alt="Google" class="h-5 w-5 mr-3">
-                    Read all 152+ Reviews on Google
-                </a>
-            </div>
-        </div>
-    </section>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-            <div class="lg:grid lg:grid-cols-3">
-                <div class="p-10 lg:col-span-2">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">What We Inspect</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
-                        <div class="flex items-center space-x-3 text-gray-700">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Engine & Transmission</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-gray-700">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Brakes & Suspension</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-gray-700">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Electrical Systems</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-gray-700">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Body & Frame Condition</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-gray-700">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Tires & Wheels</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-gray-700">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Interior Electronics</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-gray-700">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Test Drive (Road Test)</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-gray-700">
-                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span>Fluid Analysis</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-dark text-white p-10 flex flex-col justify-center items-center text-center">
-                    <div class="text-lg font-medium text-gray-300 mb-2">Starting at</div>
-                    <div class="text-6xl font-bold text-white mb-2">$180</div>
-                    <p class="text-gray-400 mb-8 text-sm">Varies by vehicle type & location</p>
-                    <a href="#contact"
-                        class="w-full bg-primary hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition transform hover:scale-105">
-                        Get A Quote
-                    </a>
-                    <p class="mt-4 text-xs text-gray-500">No payment until appointed is confirmed</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="py-20 bg-white">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h2>
-
-            <div class="space-y-4">
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>Why should I get a pre-purchase inspection?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        Used cars can hide issues that aren’t visible during a test drive. A pre-purchase inspection can
-                        reveal mechanical, electrical, or structural problems, giving you peace of mind and potentially
-                        saving you thousands.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>What does the inspection include?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        Our inspections typically cover:
-                        <ul class="list-disc pl-5 mt-2 space-y-1">
-                            <li>Engine and transmission</li>
-                            <li>Brakes and suspension</li>
-                            <li>Electrical systems</li>
-                            <li>Body and frame condition</li>
-                            <li>Tires and wheels</li>
-                            <li>Interior features</li>
-                            <li>Diagnostic scan (OBD2)</li>
-                            <li>Road test (if permitted)</li>
-                            <li>Free CarFax Vehicle History Report</li>
-                            <li>High-resolution photos of key findings</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>How long does the inspection take?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        Most inspections take 1 to 2 hours, depending on the vehicle's condition and complexity.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>What is a pre-purchase car inspection?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        A pre-purchase inspection is a comprehensive assessment of a used vehicle’s condition by a
-                        professional mechanic before you buy it. It helps you avoid costly surprises and make a
-                        confident purchase decision.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>Where do you perform the inspection?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        We proudly serve the Cape Coral and Fort Myers area. Inspections are performed on-site—whether
-                        the vehicle is at a dealership, with a private seller, or at your home.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>Can you inspect any type of vehicle?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        Yes, we inspect all major makes and models, including sedans, SUVs, trucks, and hybrids. For
-                        specialty or exotic vehicles, please contact us first.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>Will I get a report?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        Absolutely. You'll receive detailed digital reports (in PDF and online formats) covering all
-                        aspects of the inspection—plus your free CarFax history report and high-quality photos.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>What if the seller doesn’t agree to an inspection?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        That’s a red flag. If a seller refuses an inspection, it may be best to walk away from the deal.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>How much does it cost?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        Our pricing varies depending on the vehicle type and location. Check our services or contact us
-                        directly for a quote.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>Can I book online?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        Yes! Booking is easy—just use our <a href="#contact" class="text-primary hover:underline">online
-                            form</a> or give us a call to schedule an inspection at your convenience.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>Do you offer same-day inspections?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        In most cases, yes. Availability can vary by location, so contact us to check for urgent
-                        requests.
-                    </div>
-                </details>
-
-                <details
-                    class="group p-6 rounded-xl bg-gray-50 border border-gray-100 open:bg-white open:shadow-lg transition-all duration-300">
-                    <summary
-                        class="flex justify-between items-center font-medium cursor-pointer list-none text-lg text-gray-800">
-                        <span>What’s your cancellation policy?</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
-                                width="24">
-                                <path d="M6 9l6 6 6-6"></path>
-                            </svg>
-                        </span>
-                    </summary>
-                    <div class="text-gray-600 mt-3 group-open:animate-fadeIn">
-                        We offer free cancellation or rescheduling with at least 24 hours’ notice. Last-minute
-                        cancellations may incur a fee.
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact CTA Section -->
-    <section id="contact" class="py-24 bg-primary text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black/10"></div>
-        <div class="relative max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready for Peace of Mind?</h2>
-            <p class="text-xl text-red-100 mb-10 max-w-2xl mx-auto">
-                Schedule your inspection today. We will coordinate with the seller and provide you with a comprehensive
-                report within hours.
+            <p class="hero-copy">
+              Independent vehicle inspections for online used car buyers,
+              out-of-state buyers, and local shoppers in Fort Myers,
+              Cape Coral, and Southwest Florida.
             </p>
-            <div class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl text-gray-900 mx-auto max-w-xl">
-                <form
-                    action="https://docs.google.com/forms/d/e/1FAIpQLSc38iBlYgrfcEGy1Gpw6HIsjcooJjSGaDynoqMfSDU8RZPRXg/formResponse"
-                    method="POST" target="_blank" class="space-y-4 text-left">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-                        <input type="text" name="entry.2053748868" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                            placeholder="John Doe">
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                            <input type="tel" name="entry.267150951" required
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                                placeholder="(239) 555-0123">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Email (Optional)</label>
-                            <input type="email" name="entry.1244658111"
-                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                                placeholder="john@example.com">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Vehicle Location</label>
-                        <input type="text" name="entry.208795686" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                            placeholder="e.g. Cape Coral Dealership or Home Address">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">VIN Number (or
-                            Year/Make/Model)</label>
-                        <input type="text" name="entry.1121960550"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                            placeholder="e.g. 1FADP5...">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Notes (Optional)</label>
-                        <textarea name="entry.907646822" rows="3"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                            placeholder="Any specific concerns or details..."></textarea>
-                    </div>
-                    <button type="submit"
-                        class="w-full bg-primary hover:bg-red-800 text-white font-bold py-4 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
-                        Request Appointment
-                    </button>
-                    <p class="text-xs text-center text-gray-500 mt-4">We'll call you to confirm availability and price.
-                    </p>
-                </form>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#request">Request Inspection</a>
+              <a class="btn btn-secondary" href="tel:2396725543">Call or Text 239-672-5543</a>
             </div>
 
-            <div class="mt-12">
-                <p class="text-lg font-medium opacity-90">Or call us directly:</p>
-                <a href="tel:+12396725543"
-                    class="text-3xl md:text-5xl font-extrabold tracking-tight hover:text-gray-200 transition">(239)
-                    672-5543</a>
+            <div class="trust-row">
+              <div class="trust-pill">✓ Same-Day Availability</div>
+              <div class="trust-pill">✓ Detailed Report With Photos</div>
+              <div class="trust-pill">✓ Diagnostic Scan Included</div>
             </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Trust and review card">
+            <div class="hero-card-top">
+              <div>
+                <p class="eyebrow">Trusted Inspection Service</p>
+                <strong style="color: var(--navy); font-size: 22px; line-height: 1.1; display: block;">
+                  Professional buyer protection before purchase.
+                </strong>
+              </div>
+
+              <div class="trust-badge">
+                ASE<br />Certified
+              </div>
+            </div>
+
+            <a
+              class="google-review-btn"
+              href="https://www.google.com/search?q=U.S.+Auto+Inspection+reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Read our 5-Star Google Reviews"
+            >
+              <span class="review-star">★</span>
+              <span>5-Star Google Reviews</span>
+            </a>
+
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Buyer-Friendly Report</strong>
+                <span>Clear findings, photos, and negotiation points.</span>
+              </div>
+
+              <div class="mini-card">
+                <strong>Local Inspector</strong>
+                <span>Fort Myers, Cape Coral, and surrounding areas.</span>
+              </div>
+
+              <div class="mini-card">
+                <strong>No Upfront Request Fee</strong>
+                <span>Submit details first. Pay after price is confirmed.</span>
+              </div>
+
+              <div class="mini-card">
+                <strong>Fast Delivery</strong>
+                <span>Report delivery after the on-site inspection is completed.</span>
+              </div>
+            </div>
+          </aside>
         </div>
-    </section>
+      </section>
 
-    <!-- Footer -->
-    <footer class="bg-darker text-gray-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-                <img class="h-10 w-auto mb-6" src="assets/img/logo.jpg" alt="Logo">
-                <p class="text-sm leading-relaxed">
-                    Protecting your investment with detailed, honest vehicle inspections in Cape Coral and Fort Myers.
-                </p>
-                <div class="flex space-x-4 mt-6">
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/share/181r9mqNHq/" target="_blank"
-                        class="text-gray-400 hover:text-white transition">
-                        <span class="sr-only">Facebook</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                        </svg>
-                    </a>
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com/usautoinspection?utm_source=qr&igsh=bHdtbXFyNXN3M2t3"
-                        target="_blank" class="text-gray-400 hover:text-white transition">
-                        <span class="sr-only">Instagram</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                        </svg>
-                    </a>
-                    <!-- YouTube -->
-                    <a href="https://youtube.com/@u.s.autoinspection?si=hGh1cDkm_7oKqK0X" target="_blank"
-                        class="text-gray-400 hover:text-white transition">
-                        <span class="sr-only">YouTube</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
+      <section id="receive" class="receive-section">
+        <div class="container">
+          <div class="section-title">
+            <p class="eyebrow">What You Receive</p>
+            <h2>A clear inspection package designed for used car buyers.</h2>
+            <p>
+              We document the vehicle condition so you can make a smarter buying decision
+              before sending a deposit, booking travel, or signing paperwork.
+            </p>
+          </div>
 
-            <div>
-                <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Quick Links</h3>
-                <ul class="space-y-3">
-                    <li><a href="#" class="hover:text-white transition">Home</a></li>
-                    <li><a href="#benefits" class="hover:text-white transition">Why Us</a></li>
-                    <li><a href="#services" class="hover:text-white transition">Services</a></li>
-                    <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
-                </ul>
-            </div>
+          <div class="receive-grid">
+            <article class="receive-card">
+              <div class="icon-bubble">📄</div>
+              <h3>Multi-Point Inspection Report</h3>
+              <p>
+                Exterior, interior, engine bay, fluids, tires, brakes, suspension,
+                undercarriage, and buyer considerations.
+              </p>
+            </article>
 
-            <div>
-                <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Contact Info</h3>
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <svg class="h-6 w-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                        </svg>
-                        (239) 672-5543
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="h-6 w-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                        usautoinspection@yahoo.com
-                    </li>
-                    <li class="text-sm text-gray-500 mt-4">
-                        © 2026 by US Auto Inspection.<br>All Rights Reserved.
-                    </li>
-                </ul>
-            </div>
+            <article class="receive-card">
+              <div class="icon-bubble">📸</div>
+              <h3>Photo Documentation</h3>
+              <p>
+                Detailed photos are shared so you can see important condition details
+                beyond the online listing.
+              </p>
+            </article>
+
+            <article class="receive-card">
+              <div class="icon-bubble">🔎</div>
+              <h3>Diagnostic Scan</h3>
+              <p>
+                OBD scan performed when the vehicle allows communication and access is available.
+              </p>
+            </article>
+
+            <article class="receive-card">
+              <div class="icon-bubble">🚗</div>
+              <h3>Road Test Notes</h3>
+              <p>
+                Road test performed when permitted and legally possible, with notes on
+                drivability, braking, steering, and shifting.
+              </p>
+            </article>
+          </div>
         </div>
+      </section>
+
+      <section id="samples" class="samples-section">
+        <div class="container">
+          <div class="section-title">
+            <p class="eyebrow">Sample Reports</p>
+            <h2>See what your inspection report can look like.</h2>
+            <p>
+              Review our sample inspection documents before booking so you know exactly
+              what type of information you will receive.
+            </p>
+          </div>
+
+          <div class="samples-grid">
+            <article class="sample-card">
+              <div class="icon-bubble" style="margin-left:auto; margin-right:auto;">📋</div>
+              <h3>Sample Multi-Point Inspection Report</h3>
+              <p>
+                View a professional sample report with vehicle overview, exterior,
+                interior, engine bay, undercarriage, road test, photos, and final notes.
+              </p>
+
+              <a
+                class="btn btn-primary"
+                href="assets/reports/Multi-Point_Inspection_Report_Sample_US_Auto_Inspection.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Multi-Point Inspection Report
+              </a>
+            </article>
+
+            <article class="sample-card">
+              <div class="icon-bubble" style="margin-left:auto; margin-right:auto;">🧠</div>
+              <h3>Sample Diagnostic Report</h3>
+              <p>
+                View a sample diagnostic scan report showing the type of system scan
+                information that may be included when OBD communication is available.
+              </p>
+
+              <a
+                class="btn btn-secondary"
+                href="assets/reports/DIAGNOSTIC%20REPORT%20SAMPLE.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Diagnostic Report Sample
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="container">
+          <div class="section-title">
+            <p class="eyebrow">Simple Process</p>
+            <h2>How the inspection request works.</h2>
+            <p>
+              No upfront payment is required to submit the request. We review the vehicle
+              details first, then confirm price and availability.
+            </p>
+          </div>
+
+          <div class="cards-grid">
+            <article class="process-card">
+              <div class="icon-bubble">1</div>
+              <h3>Send Vehicle Details</h3>
+              <p>
+                Share the vehicle listing, VIN, location, seller/dealer contact,
+                and your contact information.
+              </p>
+            </article>
+
+            <article class="process-card">
+              <div class="icon-bubble">2</div>
+              <h3>We Confirm Price & Availability</h3>
+              <p>
+                We review the inspection location, vehicle type, schedule, and any
+                special requests before confirming the final price.
+              </p>
+            </article>
+
+            <article class="process-card">
+              <div class="icon-bubble">3</div>
+              <h3>Pay Invoice To Book</h3>
+              <p>
+                Once you approve the price, we send a secure Square invoice.
+                Payment officially confirms the appointment.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="booking" class="booking-section">
+        <div class="container booking-wrap">
+          <div class="booking-info">
+            <p class="eyebrow">Request First. Pay When Ready.</p>
+            <h2>No upfront payment to submit your request.</h2>
+            <p>
+              This keeps the process simple and fair. Send the vehicle information first.
+              We confirm the service area, inspection type, availability, and final price
+              before sending the invoice.
+            </p>
+          </div>
+
+          <section class="booking-card" aria-label="Booking steps">
+            <p class="eyebrow">Request First. Pay When Ready.</p>
+
+            <h2>No upfront payment to submit your request.</h2>
+
+            <p class="booking-text">
+              Submit your vehicle details first. We will review the location, availability,
+              and inspection type, then send you the final price and secure Square invoice.
+            </p>
+
+            <div class="booking-steps">
+              <div class="booking-step">
+                <span>1</span>
+                <strong>Send vehicle details</strong>
+              </div>
+
+              <div class="booking-step">
+                <span>2</span>
+                <strong>We confirm price & availability</strong>
+              </div>
+
+              <div class="booking-step">
+                <span>3</span>
+                <strong>Pay invoice to officially book</strong>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="request" class="form-section">
+        <div class="container quote-wrap">
+          <div class="quote-card">
+            <p class="eyebrow">Request Your Inspection</p>
+
+            <h2>Send the vehicle details and we will confirm the next available appointment.</h2>
+
+            <p>
+              For faster scheduling, include the year, make, model, VIN,
+              dealership or seller address, and salesperson contact if available.
+            </p>
+
+            <div class="trust-row">
+              <div class="trust-pill">✓ No upfront payment to request</div>
+              <div class="trust-pill">✓ Secure Square invoice after confirmation</div>
+              <div class="trust-pill">✓ Appointment confirmed after payment</div>
+            </div>
+          </div>
+
+          <form
+            class="form-box"
+            action="mailto:mflautomotivegroup@gmail.com"
+            method="post"
+            enctype="text/plain"
+          >
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input id="name" name="Full Name" type="text" placeholder="Your full name" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="Phone Number" type="tel" placeholder="Your phone number" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email Address</label>
+                <input id="email" name="Email Address" type="email" placeholder="Your email" required />
+              </div>
+
+              <div class="field">
+                <label for="vehicle">Vehicle</label>
+                <input id="vehicle" name="Vehicle" type="text" placeholder="Year / Make / Model" required />
+              </div>
+
+              <div class="field">
+                <label for="vin">VIN</label>
+                <input id="vin" name="VIN" type="text" placeholder="Vehicle VIN if available" />
+              </div>
+
+              <div class="field">
+                <label for="location">Vehicle Location</label>
+                <input id="location" name="Vehicle Location" type="text" placeholder="Dealer or seller address" required />
+              </div>
+
+              <div class="field full">
+                <label for="listing">Vehicle Listing Link</label>
+                <input id="listing" name="Vehicle Listing Link" type="url" placeholder="Paste the vehicle listing link" />
+              </div>
+
+              <div class="field full">
+                <label for="notes">Special Requests / Seller Contact</label>
+                <textarea
+                  id="notes"
+                  name="Special Requests"
+                  placeholder="Add seller/dealer contact, preferred appointment time, or concerns you want checked."
+                ></textarea>
+              </div>
+            </div>
+
+            <button class="btn btn-primary submit-btn" type="submit">
+              Submit Inspection Request
+            </button>
+
+            <p class="form-note">
+              Submitting this request does not book the inspection yet. Your appointment is
+              officially confirmed once the final price is accepted and the Square invoice is paid.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>U.S. Auto Inspection</h3>
+          <p>
+            Professional pre-purchase used vehicle inspections for Fort Myers,
+            Cape Coral, and Southwest Florida.
+          </p>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p><a href="tel:2396725543">239-672-5543</a></p>
+          <p><a href="mailto:mflautomotivegroup@gmail.com">mflautomotivegroup@gmail.com</a></p>
+          <p>
+            <a href="https://www.usautoinspection.com" target="_blank" rel="noopener noreferrer">
+              www.usautoinspection.com
+            </a>
+          </p>
+        </div>
+
+        <div>
+          <h4>Important Note</h4>
+          <p>
+            Inspection is visual and non-invasive. No disassembly. Diagnostic scan and road test
+            depend on vehicle access, communication, and seller/dealer permission.
+          </p>
+        </div>
+      </div>
     </footer>
 
-    <!-- Scripts -->
-    <script>
-        // Mobile menu toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                menu.classList.add('hidden'); // Close mobile menu if open
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 20) {
-                header.classList.add('shadow-md');
-                header.classList.remove('shadow-sm');
-            } else {
-                header.classList.remove('shadow-md');
-                header.classList.add('shadow-sm');
-            }
-        });
-    </script>
-    <!-- Floating Mobile "Book Inspection" Button -->
-    <div class="fixed bottom-6 right-4 z-50 md:hidden font-sans">
-        <a href="#contact"
-            class="flex items-center justify-center gap-2 w-auto px-6 bg-primary text-white text-center font-bold py-3 rounded-full shadow-2xl border-2 border-white/20 hover:bg-red-800 transition-all transform hover:scale-105 backdrop-blur-sm">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-            </svg>
-            <span>Book Now</span>
-        </a>
+    <div class="mobile-call-bar" aria-label="Mobile quick actions">
+      <a class="call" href="tel:2396725543">Call/Text</a>
+      <a class="request" href="#request">Request</a>
     </div>
-
+  </div>
 </body>
-
 </html>
