@@ -26,7 +26,7 @@
       // Recommended primary conversions: booking and phone.
       // Recommended secondary conversions: sms and vinReview.
       googleAdsConversionLabels: {
-        booking: '',      // Form submit / Request Used Car Inspection
+        booking: 'EfKyCOij1KccEL2D9YM_',      // Form submit / Request Used Car Inspection
         phone: '',        // Phone call click
         sms: '',          // Text message click
         vinReview: '',    // VIN Review Square click
@@ -52,7 +52,7 @@
 
     function leadValue(labelKey) {
       const values = {
-        booking: 200,
+        booking: 180,
         phone: 150,
         sms: 125,
         vinReview: 25,
@@ -2023,11 +2023,6 @@
     let bookingFormStarted = false;
 
     function handleBookingSubmit(event) {
-      trackAction('booking_form_submit', 'booking', {
-        form_name: 'pre_purchase_inspection_request',
-        method: 'google_form_embed'
-      });
-
       const form = document.getElementById('bookingForm');
       const success = document.getElementById('bookingSuccess');
 
@@ -2036,6 +2031,13 @@
           form.style.display = 'none';
           success.classList.add('show');
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          // Google Ads conversion fires only after the booking request success message is shown.
+          trackAction('booking_form_submit', 'booking', {
+            form_name: 'pre_purchase_inspection_request',
+            method: 'google_form_embed',
+            conversion_trigger: 'booking_success_message_shown'
+          });
         }
       }, 700);
 
