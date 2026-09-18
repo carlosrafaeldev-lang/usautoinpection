@@ -516,6 +516,77 @@
     input:focus, textarea:focus { border-color: var(--blue-bright); box-shadow: 0 0 0 4px rgba(37,99,235,.12); }
     textarea { min-height: 120px; resize: vertical; }
 
+
+    /* Anti-spam / human verification */
+    .antispam-box {
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      background: #F8FAFC;
+    }
+
+    .antispam-box strong {
+      display: block;
+      color: #0F172A;
+      margin-bottom: 6px;
+      font-size: .95rem;
+    }
+
+    .antispam-box p {
+      margin: 0 0 10px;
+      color: #64748B;
+      font-size: .86rem;
+      line-height: 1.5;
+    }
+
+    .antispam-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .antispam-question {
+      font-weight: 900;
+      color: #0F172A;
+      white-space: nowrap;
+    }
+
+    .antispam-answer {
+      width: 96px;
+      min-height: 46px;
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .antispam-status {
+      font-size: .84rem;
+      font-weight: 800;
+      color: #64748B;
+    }
+
+    .antispam-status.ok { color: #15803D; }
+    .antispam-status.error { color: #B91C1C; }
+
+    .spam-honeypot {
+      position: absolute !important;
+      left: -10000px !important;
+      top: auto !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    #bookingSubmit:disabled {
+      cursor: not-allowed;
+      opacity: .55;
+      transform: none !important;
+      box-shadow: none;
+    }
+
     .footer { background: #050A14; color: #CBD5E1; padding: 54px 0 90px; }
     .footer-grid { display: grid; grid-template-columns: 1.3fr .8fr 1fr; gap: 34px; }
     .footer h3 { color: #fff; margin: 0 0 14px; font-size: .95rem; text-transform: uppercase; letter-spacing: .08em; }
@@ -1939,30 +2010,55 @@
                 <div class="form-grid">
                   <div class="form-field full">
                     <label for="name">Your Name</label>
-                    <input id="name" type="text" name="entry.2053748868" placeholder="John Doe">
+                    <input id="name" type="text" name="entry.2053748868" placeholder="John Doe" autocomplete="name" required>
                   </div>
                   <div class="form-field">
                     <label for="phone">Phone Number</label>
-                    <input id="phone" type="tel" name="entry.267150951" placeholder="(239) 555-0123">
+                    <input id="phone" type="tel" name="entry.267150951" placeholder="(239) 555-0123" autocomplete="tel" required>
                   </div>
                   <div class="form-field">
                     <label for="email">Email Optional</label>
-                    <input id="email" type="email" name="entry.1244658111" placeholder="john@example.com">
+                    <input id="email" type="email" name="entry.1244658111" placeholder="john@example.com" autocomplete="email">
                   </div>
                   <div class="form-field full">
                     <label for="location">Vehicle Location / Dealership Address</label>
-                    <input id="location" type="text" name="entry.208795686" placeholder="Cape Coral dealership, Fort Myers seller, or full address">
+                    <input id="location" type="text" name="entry.208795686" placeholder="Cape Coral dealership, Fort Myers seller, or full address" required>
                   </div>
                   <div class="form-field full">
                     <label for="vehicle">VIN, Listing Link, or Year/Make/Model</label>
-                    <input id="vehicle" type="text" name="entry.1121960550" placeholder="VIN, listing URL, or vehicle details">
+                    <input id="vehicle" type="text" name="entry.1121960550" placeholder="VIN, listing URL, or vehicle details" required>
                   </div>
                   <div class="form-field full">
                     <label for="notes">Seller Contact, Notes, or Focus Areas</label>
                     <textarea id="notes" name="entry.907646822" placeholder="Salesperson name/phone, seller contact, warning lights, oil leaks, accident history, transmission shifting, suspension noise, rust, brake condition, timing preference, etc."></textarea>
                   </div>
                 </div>
-                <button class="btn btn-primary" style="width: 100%; margin-top: 18px; border-radius: 14px;" type="submit">Request Used Car Inspection</button>
+                <!-- Hidden honeypot: real customers never see or fill this field -->
+                <div class="spam-honeypot" aria-hidden="true">
+                  <label for="companyWebsite">Leave this field empty</label>
+                  <input id="companyWebsite" type="text" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- Human verification -->
+                <div class="antispam-box" id="humanVerificationBox">
+                  <strong>Human Verification</strong>
+                  <p>Please solve this quick question to enable the submit button.</p>
+                  <div class="antispam-row">
+                    <span class="antispam-question" id="humanQuestion">Loading question…</span>
+                    <input
+                      class="antispam-answer"
+                      id="humanAnswer"
+                      type="number"
+                      inputmode="numeric"
+                      autocomplete="off"
+                      aria-label="Human verification answer"
+                      placeholder="Answer"
+                    >
+                    <span class="antispam-status" id="humanStatus" aria-live="polite">Required</span>
+                  </div>
+                </div>
+
+                <button id="bookingSubmit" class="btn btn-primary" style="width: 100%; margin-top: 18px; border-radius: 14px;" type="submit" disabled>Request Used Car Inspection</button>
                 <p class="muted-note" style="text-align: center;">We’ll review the vehicle details, location, pricing, and availability before sending the Square invoice link.</p>
               </form>
               <div id="bookingSuccess" class="form-success" aria-live="polite">
@@ -2033,9 +2129,110 @@
 
     let bookingFormStarted = false;
 
+    // -----------------------------
+    // Anti-spam / human verification
+    // -----------------------------
+    let humanExpectedAnswer = null;
+    let bookingFormLoadedAt = Date.now();
+    const MIN_FORM_TIME_MS = 4000;   // blocks instant bot submissions
+    const SUBMIT_COOLDOWN_MS = 30000; // blocks rapid repeat submissions in the same browser
+
+    function createHumanChallenge() {
+      const a = Math.floor(Math.random() * 7) + 2; // 2-8
+      const b = Math.floor(Math.random() * 7) + 2; // 2-8
+      humanExpectedAnswer = a + b;
+
+      const question = document.getElementById('humanQuestion');
+      const answer = document.getElementById('humanAnswer');
+      const status = document.getElementById('humanStatus');
+      const submit = document.getElementById('bookingSubmit');
+
+      if (question) question.textContent = 'What is ' + a + ' + ' + b + '?';
+      if (answer) answer.value = '';
+      if (status) {
+        status.textContent = 'Required';
+        status.className = 'antispam-status';
+      }
+      if (submit) submit.disabled = true;
+    }
+
+    function validateHumanChallenge() {
+      const answer = document.getElementById('humanAnswer');
+      const status = document.getElementById('humanStatus');
+      const submit = document.getElementById('bookingSubmit');
+      if (!answer || !status || !submit) return false;
+
+      const isCorrect = Number(answer.value) === humanExpectedAnswer;
+
+      if (answer.value === '') {
+        status.textContent = 'Required';
+        status.className = 'antispam-status';
+        submit.disabled = true;
+        return false;
+      }
+
+      if (isCorrect) {
+        status.textContent = '✓ Verified';
+        status.className = 'antispam-status ok';
+        submit.disabled = false;
+        return true;
+      }
+
+      status.textContent = 'Incorrect answer';
+      status.className = 'antispam-status error';
+      submit.disabled = true;
+      return false;
+    }
+
     function handleBookingSubmit(event) {
       const form = document.getElementById('bookingForm');
       const success = document.getElementById('bookingSuccess');
+      const honeypot = document.getElementById('companyWebsite');
+      const submit = document.getElementById('bookingSubmit');
+
+      // Honeypot: bots often fill every input automatically.
+      if (honeypot && honeypot.value.trim() !== '') {
+        event.preventDefault();
+        return false;
+      }
+
+      // Require the human challenge to be correct.
+      if (!validateHumanChallenge()) {
+        event.preventDefault();
+        const answer = document.getElementById('humanAnswer');
+        if (answer) answer.focus();
+        return false;
+      }
+
+      // Reject forms completed unrealistically fast.
+      if (Date.now() - bookingFormLoadedAt < MIN_FORM_TIME_MS) {
+        event.preventDefault();
+        const status = document.getElementById('humanStatus');
+        if (status) {
+          status.textContent = 'Please wait a few seconds and try again.';
+          status.className = 'antispam-status error';
+        }
+        return false;
+      }
+
+      // Basic browser-side rate limit.
+      try {
+        const lastSubmit = Number(localStorage.getItem('usai_booking_last_submit') || 0);
+        if (lastSubmit && Date.now() - lastSubmit < SUBMIT_COOLDOWN_MS) {
+          event.preventDefault();
+          const status = document.getElementById('humanStatus');
+          if (status) {
+            status.textContent = 'Please wait before submitting another request.';
+            status.className = 'antispam-status error';
+          }
+          return false;
+        }
+        localStorage.setItem('usai_booking_last_submit', String(Date.now()));
+      } catch (e) {
+        // If localStorage is unavailable, continue normally.
+      }
+
+      if (submit) submit.disabled = true;
 
       window.setTimeout(function() {
         if (form && success) {
@@ -2069,6 +2266,8 @@
       }
 
       bookingFormStarted = false;
+      bookingFormLoadedAt = Date.now();
+      createHumanChallenge();
       trackAction('booking_form_reset', 'engagement');
     }
 
@@ -2163,6 +2362,14 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+      bookingFormLoadedAt = Date.now();
+      createHumanChallenge();
+
+      const humanAnswer = document.getElementById('humanAnswer');
+      if (humanAnswer) {
+        humanAnswer.addEventListener('input', validateHumanChallenge);
+      }
+
       setupFormStartTracking();
       setupScrollDepthTracking();
       setupSectionViewTracking();
