@@ -2006,7 +2006,7 @@
     
             <div class="form-card">
               <iframe name="hiddenBookingFrame" id="hiddenBookingFrame" style="display:none;"></iframe>
-              <form id="bookingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSc38iBlYgrfcEGy1Gpw6HIsjcooJjSGaDynoqMfSDU8RZPRXg/formResponse" method="POST" target="hiddenBookingFrame" onsubmit="return handleBookingSubmit(event)">
+              <form id="bookingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSc38iBlYgrfcEGy1Gpw6HIsjcooJjSGaDynoqMfSDU8RZPRXg/formResponse" method="POST" target="hiddenBookingFrame">
                 <div class="form-grid">
                   <div class="form-field full">
                     <label for="name">Your Name</label>
@@ -2058,7 +2058,7 @@
                   </div>
                 </div>
 
-                <button id="bookingSubmit" class="btn btn-primary" style="width: 100%; margin-top: 18px; border-radius: 14px;" type="submit" disabled>Request Used Car Inspection</button>
+                <button id="bookingSubmit" class="btn btn-primary" style="width: 100%; margin-top: 18px; border-radius: 14px;" type="button" onclick="submitBookingRequest()" disabled>Request Used Car Inspection</button>
                 <p class="muted-note" style="text-align: center;">We’ll review the vehicle details, location, pricing, and availability before sending the Square invoice link.</p>
               </form>
               <div id="bookingSuccess" class="form-success" aria-live="polite">
@@ -2134,8 +2134,6 @@
     // -----------------------------
     let humanExpectedAnswer = null;
     let bookingFormLoadedAt = Date.now();
-    const MIN_FORM_TIME_MS = 4000;   // blocks instant bot submissions
-    const SUBMIT_COOLDOWN_MS = 30000; // blocks rapid repeat submissions in the same browser
 
     function createHumanChallenge() {
       const a = Math.floor(Math.random() * 7) + 2; // 2-8
@@ -2184,72 +2182,119 @@
       return false;
     }
 
-    function handleBookingSubmit(event) {
+    function submitBookingRequest() {
       const form = document.getElementById('bookingForm');
       const success = document.getElementById('bookingSuccess');
       const honeypot = document.getElementById('companyWebsite');
       const submit = document.getElementById('bookingSubmit');
+      const status = document.getElementById('humanStatus');
+      const iframe = document.getElementById('hiddenBookingFrame');
 
-      // Honeypot: bots often fill every input automatically.
-      if (honeypot && honeypot.value.trim() !== '') {
-        event.preventDefault();
+      if (!form) return false;
+
+      // Validate the customer fields first.
+      if (!form.checkValidity()) {
+        form.reportValidity();
         return false;
       }
 
-      // Require the human challenge to be correct.
+      // Honeypot: a real customer should never fill this hidden field.
+      if (honeypot && honeypot.value.trim() !== '') {
+        return false;
+      }
+
+      // Human verification must still be correct at the moment of sending.
       if (!validateHumanChallenge()) {
-        event.preventDefault();
         const answer = document.getElementById('humanAnswer');
         if (answer) answer.focus();
         return false;
       }
 
-      // Reject forms completed unrealistically fast.
-      if (Date.now() - bookingFormLoadedAt < MIN_FORM_TIME_MS) {
-        event.preventDefault();
-        const status = document.getElementById('humanStatus');
-        if (status) {
-          status.textContent = 'Please wait a few seconds and try again.';
-          status.className = 'antispam-status error';
-        }
-        return false;
+      if (submit) {
+        submit.disabled = true;
+        submit.textContent = 'Sending Request...';
       }
 
-      // Basic browser-side rate limit.
-      try {
-        const lastSubmit = Number(localStorage.getItem('usai_booking_last_submit') || 0);
-        if (lastSubmit && Date.now() - lastSubmit < SUBMIT_COOLDOWN_MS) {
-          event.preventDefault();
-          const status = document.getElementById('humanStatus');
-          if (status) {
-            status.textContent = 'Please wait before submitting another request.';
-            status.className = 'antispam-status error';
-          }
-          return false;
-        }
-        localStorage.setItem('usai_booking_last_submit', String(Date.now()));
-      } catch (e) {
-        // If localStorage is unavailable, continue normally.
+      if (status) {
+        status.textContent = '✓ Verified';
+        status.className = 'antispam-status ok';
       }
 
-      if (submit) submit.disabled = true;
+      // Build a fresh temporary POST form containing ONLY the fields
+      // Google Forms expects. This avoids any submit-event conflict.
+      const googlePostForm = document.createElement('form');
+      googlePostForm.method = 'POST';
+      googlePostForm.action = form.action;
+      googlePostForm.target = 'hiddenBookingFrame';
+      googlePostForm.style.display = 'none';
 
-      window.setTimeout(function() {
+      const formData = new FormData(form);
+
+      formData.forEach(function(value, key) {
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = key;
+        hiddenInput.value = String(value);
+        googlePostForm.appendChild(hiddenInput);
+      });
+
+      document.body.appendChild(googlePostForm);
+
+      let confirmationShown = false;
+
+      function showBookingConfirmation() {
+        if (confirmationShown) return;
+        confirmationShown = true;
+
         if (form && success) {
           form.style.display = 'none';
           success.classList.add('show');
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-          // Google Ads conversion fires only after the booking request success message is shown.
           trackAction('booking_form_submit', 'booking', {
             form_name: 'pre_purchase_inspection_request',
-            method: 'google_form_embed',
-            conversion_trigger: 'booking_success_message_shown'
+            method: 'google_form_post',
+            conversion_trigger: 'google_form_iframe_loaded'
           });
         }
-      }, 700);
 
-      return true;
+        if (googlePostForm && googlePostForm.parentNode) {
+          googlePostForm.parentNode.removeChild(googlePostForm);
+        }
+      }
+
+      // A cross-origin iframe still fires "load" after Google receives the POST.
+      if (iframe) {
+        iframe.addEventListener('load', showBookingConfirmation, { once: true });
+      }
+
+      try {
+        // Native submit on the temporary form: no onsubmit handler can cancel it.
+        HTMLFormElement.prototype.submit.call(googlePostForm);
+      } catch (error) {
+        console.error('Google Forms submission error:', error);
+
+        if (googlePostForm && googlePostForm.parentNode) {
+          googlePostForm.parentNode.removeChild(googlePostForm);
+        }
+
+        if (submit) {
+          submit.disabled = false;
+          submit.textContent = 'Request Used Car Inspection';
+        }
+
+        if (status) {
+          status.textContent = 'Submission error. Please try again.';
+          status.className = 'antispam-status error';
+        }
+
+        return false;
+      }
+
+      // Fallback only for browsers where the hidden iframe load event is delayed.
+      window.setTimeout(showBookingConfirmation, 2500);
+
+      return false;
     }
 
     function resetBookingForm() {
@@ -2263,6 +2308,12 @@
 
       if (success) {
         success.classList.remove('show');
+      }
+
+      const submit = document.getElementById('bookingSubmit');
+      if (submit) {
+        submit.textContent = 'Request Used Car Inspection';
+        submit.disabled = true;
       }
 
       bookingFormStarted = false;
