@@ -517,8 +517,8 @@
     textarea { min-height: 120px; resize: vertical; }
 
 
-    /* Anti-spam / human verification */
-    .antispam-box {
+    /* Secure booking / Cloudflare Turnstile */
+    .turnstile-box {
       margin-top: 18px;
       padding: 16px;
       border: 1px solid #CBD5E1;
@@ -526,48 +526,30 @@
       background: #F8FAFC;
     }
 
-    .antispam-box strong {
+    .turnstile-box strong {
       display: block;
       color: #0F172A;
       margin-bottom: 6px;
       font-size: .95rem;
     }
 
-    .antispam-box p {
-      margin: 0 0 10px;
+    .turnstile-box p {
+      margin: 0 0 12px;
       color: #64748B;
       font-size: .86rem;
       line-height: 1.5;
     }
 
-    .antispam-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .antispam-question {
-      font-weight: 900;
-      color: #0F172A;
-      white-space: nowrap;
-    }
-
-    .antispam-answer {
-      width: 96px;
-      min-height: 46px;
-      text-align: center;
-      font-weight: 900;
-    }
-
-    .antispam-status {
+    .turnstile-status {
+      display: block;
+      margin-top: 10px;
       font-size: .84rem;
       font-weight: 800;
       color: #64748B;
     }
 
-    .antispam-status.ok { color: #15803D; }
-    .antispam-status.error { color: #B91C1C; }
+    .turnstile-status.ok { color: #15803D; }
+    .turnstile-status.error { color: #B91C1C; }
 
     .spam-honeypot {
       position: absolute !important;
@@ -1652,6 +1634,7 @@
       }
     }
 </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -2005,32 +1988,31 @@
             </div>
     
             <div class="form-card">
-              <iframe name="hiddenBookingFrame" id="hiddenBookingFrame" style="display:none;"></iframe>
-              <form id="bookingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSc38iBlYgrfcEGy1Gpw6HIsjcooJjSGaDynoqMfSDU8RZPRXg/formResponse" method="POST" target="hiddenBookingFrame">
+              <form id="bookingForm" novalidate>
                 <div class="form-grid">
                   <div class="form-field full">
                     <label for="name">Your Name</label>
-                    <input id="name" type="text" name="entry.2053748868" placeholder="John Doe" autocomplete="name" required>
+                    <input id="name" type="text" name="name" placeholder="John Doe" autocomplete="name" required>
                   </div>
                   <div class="form-field">
                     <label for="phone">Phone Number</label>
-                    <input id="phone" type="tel" name="entry.267150951" placeholder="(239) 555-0123" autocomplete="tel" required>
+                    <input id="phone" type="tel" name="phone" placeholder="(239) 555-0123" autocomplete="tel" required>
                   </div>
                   <div class="form-field">
                     <label for="email">Email Optional</label>
-                    <input id="email" type="email" name="entry.1244658111" placeholder="john@example.com" autocomplete="email">
+                    <input id="email" type="email" name="email" placeholder="john@example.com" autocomplete="email">
                   </div>
                   <div class="form-field full">
                     <label for="location">Vehicle Location / Dealership Address</label>
-                    <input id="location" type="text" name="entry.208795686" placeholder="Cape Coral dealership, Fort Myers seller, or full address" required>
+                    <input id="location" type="text" name="location" placeholder="Cape Coral dealership, Fort Myers seller, or full address" required>
                   </div>
                   <div class="form-field full">
                     <label for="vehicle">VIN, Listing Link, or Year/Make/Model</label>
-                    <input id="vehicle" type="text" name="entry.1121960550" placeholder="VIN, listing URL, or vehicle details" required>
+                    <input id="vehicle" type="text" name="vehicle" placeholder="VIN, listing URL, or vehicle details" required>
                   </div>
                   <div class="form-field full">
                     <label for="notes">Seller Contact, Notes, or Focus Areas</label>
-                    <textarea id="notes" name="entry.907646822" placeholder="Salesperson name/phone, seller contact, warning lights, oil leaks, accident history, transmission shifting, suspension noise, rust, brake condition, timing preference, etc."></textarea>
+                    <textarea id="notes" name="notes" placeholder="Salesperson name/phone, seller contact, warning lights, oil leaks, accident history, transmission shifting, suspension noise, rust, brake condition, timing preference, etc."></textarea>
                   </div>
                 </div>
                 <!-- Hidden honeypot: real customers never see or fill this field -->
@@ -2039,23 +2021,19 @@
                   <input id="companyWebsite" type="text" tabindex="-1" autocomplete="off">
                 </div>
 
-                <!-- Human verification -->
-                <div class="antispam-box" id="humanVerificationBox">
-                  <strong>Human Verification</strong>
-                  <p>Please solve this quick question to enable the submit button.</p>
-                  <div class="antispam-row">
-                    <span class="antispam-question" id="humanQuestion">Loading question…</span>
-                    <input
-                      class="antispam-answer"
-                      id="humanAnswer"
-                      type="number"
-                      inputmode="numeric"
-                      autocomplete="off"
-                      aria-label="Human verification answer"
-                      placeholder="Answer"
-                    >
-                    <span class="antispam-status" id="humanStatus" aria-live="polite">Required</span>
+                <!-- Cloudflare Turnstile: token is verified again by the Cloudflare Worker -->
+                <div class="turnstile-box" id="turnstileVerificationBox">
+                  <strong>Security Verification</strong>
+                  <p>Complete the secure verification below before sending your inspection request.</p>
+                  <div
+                    class="cf-turnstile"
+                    data-sitekey="0x4AAAAAAE8ck_XuaZ-MoPYb"
+                    data-theme="light"
+                    data-callback="onTurnstileSuccess"
+                    data-expired-callback="onTurnstileExpired"
+                    data-error-callback="onTurnstileError">
                   </div>
+                  <span class="turnstile-status" id="turnstileStatus" aria-live="polite">Verification required</span>
                 </div>
 
                 <button id="bookingSubmit" class="btn btn-primary" style="width: 100%; margin-top: 18px; border-radius: 14px;" type="button" onclick="submitBookingRequest()" disabled>Request Used Car Inspection</button>
@@ -2128,87 +2106,108 @@
     }
 
     let bookingFormStarted = false;
+    let turnstileToken = '';
 
-    // -----------------------------
-    // Anti-spam / human verification
-    // -----------------------------
-    let humanExpectedAnswer = null;
-    let bookingFormLoadedAt = Date.now();
+    const BOOKING_WORKER_URL =
+      'https://usautoinspection-booking.mflautomotivegroup.workers.dev';
 
-    function createHumanChallenge() {
-      const a = Math.floor(Math.random() * 7) + 2; // 2-8
-      const b = Math.floor(Math.random() * 7) + 2; // 2-8
-      humanExpectedAnswer = a + b;
+    function onTurnstileSuccess(token) {
+      turnstileToken = token || '';
 
-      const question = document.getElementById('humanQuestion');
-      const answer = document.getElementById('humanAnswer');
-      const status = document.getElementById('humanStatus');
+      const status = document.getElementById('turnstileStatus');
       const submit = document.getElementById('bookingSubmit');
 
-      if (question) question.textContent = 'What is ' + a + ' + ' + b + '?';
-      if (answer) answer.value = '';
       if (status) {
-        status.textContent = 'Required';
-        status.className = 'antispam-status';
+        status.textContent = '✓ Secure verification complete';
+        status.className = 'turnstile-status ok';
       }
+
+      if (submit) submit.disabled = !turnstileToken;
+    }
+
+    function onTurnstileExpired() {
+      turnstileToken = '';
+
+      const status = document.getElementById('turnstileStatus');
+      const submit = document.getElementById('bookingSubmit');
+
+      if (status) {
+        status.textContent = 'Verification expired. Please verify again.';
+        status.className = 'turnstile-status error';
+      }
+
       if (submit) submit.disabled = true;
     }
 
-    function validateHumanChallenge() {
-      const answer = document.getElementById('humanAnswer');
-      const status = document.getElementById('humanStatus');
+    function onTurnstileError() {
+      turnstileToken = '';
+
+      const status = document.getElementById('turnstileStatus');
       const submit = document.getElementById('bookingSubmit');
-      if (!answer || !status || !submit) return false;
 
-      const isCorrect = Number(answer.value) === humanExpectedAnswer;
-
-      if (answer.value === '') {
-        status.textContent = 'Required';
-        status.className = 'antispam-status';
-        submit.disabled = true;
-        return false;
+      if (status) {
+        status.textContent = 'Verification could not load. Please try again.';
+        status.className = 'turnstile-status error';
       }
 
-      if (isCorrect) {
-        status.textContent = '✓ Verified';
-        status.className = 'antispam-status ok';
-        submit.disabled = false;
-        return true;
-      }
-
-      status.textContent = 'Incorrect answer';
-      status.className = 'antispam-status error';
-      submit.disabled = true;
-      return false;
+      if (submit) submit.disabled = true;
     }
 
-    function submitBookingRequest() {
+    function resetTurnstileVerification(message) {
+      turnstileToken = '';
+
+      const status = document.getElementById('turnstileStatus');
+      const submit = document.getElementById('bookingSubmit');
+
+      if (submit) submit.disabled = true;
+
+      if (status) {
+        status.textContent = message || 'Verification required';
+        status.className = 'turnstile-status';
+      }
+
+      if (window.turnstile && typeof window.turnstile.reset === 'function') {
+        try { window.turnstile.reset(); } catch (e) {}
+      }
+    }
+
+    async function submitBookingRequest() {
       const form = document.getElementById('bookingForm');
       const success = document.getElementById('bookingSuccess');
       const honeypot = document.getElementById('companyWebsite');
       const submit = document.getElementById('bookingSubmit');
-      const status = document.getElementById('humanStatus');
-      const iframe = document.getElementById('hiddenBookingFrame');
+      const status = document.getElementById('turnstileStatus');
 
       if (!form) return false;
 
-      // Validate the customer fields first.
+      // Native browser validation for required fields and email format.
       if (!form.checkValidity()) {
         form.reportValidity();
         return false;
       }
 
-      // Honeypot: a real customer should never fill this hidden field.
+      // Hidden field should always remain empty for a real customer.
       if (honeypot && honeypot.value.trim() !== '') {
         return false;
       }
 
-      // Human verification must still be correct at the moment of sending.
-      if (!validateHumanChallenge()) {
-        const answer = document.getElementById('humanAnswer');
-        if (answer) answer.focus();
+      if (!turnstileToken) {
+        if (status) {
+          status.textContent = 'Please complete the security verification.';
+          status.className = 'turnstile-status error';
+        }
         return false;
       }
+
+      const payload = {
+        name: document.getElementById('name')?.value.trim() || '',
+        phone: document.getElementById('phone')?.value.trim() || '',
+        email: document.getElementById('email')?.value.trim() || '',
+        location: document.getElementById('location')?.value.trim() || '',
+        vehicle: document.getElementById('vehicle')?.value.trim() || '',
+        notes: document.getElementById('notes')?.value.trim() || '',
+        turnstileToken: turnstileToken
+      };
 
       if (submit) {
         submit.disabled = true;
@@ -2216,35 +2215,30 @@
       }
 
       if (status) {
-        status.textContent = '✓ Verified';
-        status.className = 'antispam-status ok';
+        status.textContent = 'Secure verification complete. Sending...';
+        status.className = 'turnstile-status ok';
       }
 
-      // Build a fresh temporary POST form containing ONLY the fields
-      // Google Forms expects. This avoids any submit-event conflict.
-      const googlePostForm = document.createElement('form');
-      googlePostForm.method = 'POST';
-      googlePostForm.action = form.action;
-      googlePostForm.target = 'hiddenBookingFrame';
-      googlePostForm.style.display = 'none';
+      try {
+        const response = await fetch(BOOKING_WORKER_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
 
-      const formData = new FormData(form);
+        let result = {};
+        try {
+          result = await response.json();
+        } catch (e) {}
 
-      formData.forEach(function(value, key) {
-        const hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = key;
-        hiddenInput.value = String(value);
-        googlePostForm.appendChild(hiddenInput);
-      });
+        if (!response.ok || !result.ok) {
+          throw new Error(result.error || 'Unable to submit booking request.');
+        }
 
-      document.body.appendChild(googlePostForm);
-
-      let confirmationShown = false;
-
-      function showBookingConfirmation() {
-        if (confirmationShown) return;
-        confirmationShown = true;
+        // A Turnstile token is single-use. Clear it after a successful submission.
+        turnstileToken = '';
 
         if (form && success) {
           form.style.display = 'none';
@@ -2253,48 +2247,28 @@
 
           trackAction('booking_form_submit', 'booking', {
             form_name: 'pre_purchase_inspection_request',
-            method: 'google_form_post',
-            conversion_trigger: 'google_form_iframe_loaded'
+            method: 'cloudflare_turnstile_worker',
+            conversion_trigger: 'secure_worker_success'
           });
         }
 
-        if (googlePostForm && googlePostForm.parentNode) {
-          googlePostForm.parentNode.removeChild(googlePostForm);
-        }
-      }
-
-      // A cross-origin iframe still fires "load" after Google receives the POST.
-      if (iframe) {
-        iframe.addEventListener('load', showBookingConfirmation, { once: true });
-      }
-
-      try {
-        // Native submit on the temporary form: no onsubmit handler can cancel it.
-        HTMLFormElement.prototype.submit.call(googlePostForm);
+        return true;
       } catch (error) {
-        console.error('Google Forms submission error:', error);
-
-        if (googlePostForm && googlePostForm.parentNode) {
-          googlePostForm.parentNode.removeChild(googlePostForm);
-        }
+        console.error('Secure booking submission error:', error);
 
         if (submit) {
-          submit.disabled = false;
           submit.textContent = 'Request Used Car Inspection';
         }
 
-        if (status) {
-          status.textContent = 'Submission error. Please try again.';
-          status.className = 'antispam-status error';
-        }
+        // The token may have been consumed during a failed attempt, so always reset it.
+        resetTurnstileVerification(
+          error && error.message
+            ? error.message + ' Please verify again.'
+            : 'Unable to submit the request. Please verify again.'
+        );
 
         return false;
       }
-
-      // Fallback only for browsers where the hidden iframe load event is delayed.
-      window.setTimeout(showBookingConfirmation, 2500);
-
-      return false;
     }
 
     function resetBookingForm() {
@@ -2317,8 +2291,7 @@
       }
 
       bookingFormStarted = false;
-      bookingFormLoadedAt = Date.now();
-      createHumanChallenge();
+      resetTurnstileVerification('Verification required');
       trackAction('booking_form_reset', 'engagement');
     }
 
@@ -2413,14 +2386,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      bookingFormLoadedAt = Date.now();
-      createHumanChallenge();
-
-      const humanAnswer = document.getElementById('humanAnswer');
-      if (humanAnswer) {
-        humanAnswer.addEventListener('input', validateHumanChallenge);
-      }
-
       setupFormStartTracking();
       setupScrollDepthTracking();
       setupSectionViewTracking();
