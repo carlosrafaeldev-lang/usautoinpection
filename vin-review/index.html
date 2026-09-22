@@ -236,7 +236,7 @@
             <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
 
             <div class="turnstile-wrap">
-              <div id="turnstile"></div>
+             <div id="turnstile-container"></div>
             </div>
 
             <div class="payment" id="card-container" aria-label="Secure card payment form"></div>
@@ -372,7 +372,7 @@
         state.card = await payments.card();
         await state.card.attach("#card-container");
 
-        window.turnstile.render("#turnstile", {
+        window.turnstile.render("#turnstile-container", {
           sitekey: state.config.siteKey,
           action: "vin_review",
           theme: "light",
