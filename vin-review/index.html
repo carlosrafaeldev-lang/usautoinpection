@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0B1220">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.usautoinspection.com/vin-review">
+  <link rel="icon" type="image/jpeg" href="/assets/img/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <title>Used Car Buyer Review | $25 VIN History Analysis | U.S. Auto Inspection</title>
+  <meta name="description" content="Get a clear, buyer-friendly vehicle history review before buying a used car from a private seller. Submit your VIN and email, pay securely online, and receive your review by email.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.usautoinspection.com/vin-review">
+  <meta property="og:title" content="Used Car Buyer Review — $25 | U.S. Auto Inspection">
+  <meta property="og:description" content="Know what to ask before buying a used car. Clear vehicle-history review and buyer guidance delivered by email.">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16919642557"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "AW-16919642557");
+
+    function track(name, params) {
+      try { gtag("event", name, params || {}); } catch (_) {}
+    }
+  </script>
+
+  <style>
+    :root {
+      --navy: #0B1220;
+      --blue: #2563EB;
+      --red: #E11D2E;
+      --green: #16A34A;
+      --ink: #0f172a;
+      --slate: #475569;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --light: #f8fafc;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--light);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1080px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    .top {
+      background: var(--navy);
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .topin {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 11px;
+    }
+
+    .phone {
+      font-weight: 800;
+      font-size: .93rem;
+    }
+
+    .back {
+      color: #cbd5e1;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .back:hover { color: #fff; }
+
+    .hero {
+      background:
+        radial-gradient(circle at 85% 10%, rgba(37,99,235,.38), transparent 27%),
+        linear-gradient(135deg, #0b1220, #111d35);
+      color: #fff;
+      padding: 76px 0 84px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #bfdbfe;
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+    }
+
+    .hero h1 span { color: #ff6474; }
+
+    .hero p {
+      max-width: 700px;
+      color: #dbeafe;
+      font-size: 1.08rem;
+      margin: 24px 0;
+    }
+
+    .trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    section { padding: 70px 0; }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -.05em;
+      margin: 0 0 16px;
+    }
+
+    .lead {
+      color: var(--slate);
+      font-size: 1.05rem;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 14px 40px rgba(15,23,42,.07);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+    }
+
+    .list {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 13px;
+    }
+
+    .list li {
+      display: flex;
+      gap: 11px;
+      color: #334155;
+    }
+
+    .check {
+      display: grid;
+      place-items: center;
+      flex: 0 0 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .note {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 15px;
+      padding: 15px;
+      color: #9a3412;
+      font-size: .92rem;
+      margin-top: 20px;
+    }
+
+    .how { background: #fff; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 23px;
+      background: #fff;
+    }
+
+    .number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .step h3 { margin: 0 0 7px; }
+
+    .step p {
+      margin: 0;
+      color: var(--slate);
+      font-size: .94rem;
+    }
+
+    .buy {
+      background: linear-gradient(180deg, #eff6ff, #f8fafc);
+      padding: 78px 0;
+    }
+
+    .buygrid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .pricebox {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    .pricebox h2 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: -.05em;
+    }
+
+    .price {
+      font-size: 4.4rem;
+      line-height: 1;
+      font-weight: 900;
+      color: #fff;
+      margin: 22px 0 6px;
+      letter-spacing: -.08em;
+    }
+
+    .pricebox p { color: #cbd5e1; }
+
+    .formcard {
+      background: #fff;
+      border: 1px solid #bfdbfe;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 20px 55px rgba(37,99,235,.12);
+    }
+
+    .formcard h2 {
+      margin: 0 0 6px;
+      font-size: 1.7rem;
+      letter-spacing: -.04em;
+    }
+
+    .formcard > p {
+      margin: 0 0 22px;
+      color: var(--slate);
+    }
+
+    label {
+      font-weight: 800;
+      font-size: .92rem;
+      display: block;
+      margin: 16px 0 7px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 14px 15px;
+      color: var(--ink);
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.14);
+    }
+
+    .turnstile-wrap { margin: 20px 0 14px; }
+
+    .payment {
+      margin: 20px 0 10px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      min-height: 88px;
+      background: #fff;
+    }
+
+    .button {
+      width: 100%;
+      border: 0;
+      border-radius: 13px;
+      background: var(--red);
+      color: #fff;
+      padding: 16px;
+      font: 800 1rem Inter, sans-serif;
+      cursor: pointer;
+      transition: transform .18s, background .18s;
+    }
+
+    .button:hover:not(:disabled) {
+      background: #c91628;
+      transform: translateY(-1px);
+    }
+
+    .button:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    .status {
+      min-height: 24px;
+      margin: 14px 0 0;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .status.error { color: #b91c1c; }
+    .status.ok { color: #15803d; }
+
+    .secure {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .secure b { color: var(--green); }
+
+    .faq { background: #fff; }
+
+    .faqgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .faqitem {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 20px;
+    }
+
+    .faqitem h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .faqitem p {
+      margin: 0;
+      color: var(--slate);
+      font-size: .92rem;
+    }
+
+    .footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 34px 0;
+      font-size: .9rem;
+    }
+
+    .footerin {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer strong { color: #fff; }
+
+    @media (max-width: 760px) {
+      .phone { display: none; }
+      .hero { padding: 60px 0; }
+      .intro, .buygrid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .faqgrid { grid-template-columns: 1fr; }
+      .formcard, .pricebox, .card { padding: 23px; }
+      .topin { min-height: 68px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="container topin">
+      <a class="brand" href="/">
+        <img src="/assets/img/logo.jpg" alt="U.S. Auto Inspection">
+        <span>U.S. Auto Inspection</span>
+      </a>
+
+      <a class="back" href="/">← Full Inspection Services</a>
+      <a class="phone" href="tel:+12396725543">Call/Text (239) 672-5543</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">For private-seller used-car buyers</p>
+        <h1>Before you hand over cash, <span>know the car's story.</span></h1>
+        <p>A clean-looking used car can still have a history the seller did not mention. Send us the VIN and get clear buyer guidance before you decide to buy.</p>
+
+        <div class="trust">
+          <span class="pill">✓ $25 flat price</span>
+          <span class="pill">✓ Clear, simple explanation</span>
+          <span class="pill">✓ Delivered by email</span>
+          <span class="pill">★ Trusted local business</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container intro">
+        <div>
+          <p class="eyebrow" style="color:#1d4ed8">Do not buy blind</p>
+          <h2 class="title">The history is useful. Knowing what it means is what helps protect your money.</h2>
+          <p class="lead">We review the available vehicle-history information for the VIN you provide and explain the important findings in plain English—without confusing automotive jargon.</p>
+          <p class="lead">Made for buyers who found a car on Facebook Marketplace, Craigslist, or through a private seller and want to know what to check before meeting with cash.</p>
+        </div>
+
+        <div class="card">
+          <h3>For $25, you receive</h3>
+
+          <ul class="list">
+            <li><span class="check">✓</span><span>Vehicle-history information reviewed for your VIN</span></li>
+            <li><span class="check">✓</span><span>Important alerts explained: reported accidents, title, mileage, ownership, and service history when available</span></li>
+            <li><span class="check">✓</span><span>A simple buyer summary: what looks normal, what needs questions, and what to verify</span></li>
+            <li><span class="check">✓</span><span>Practical questions to ask the seller before you buy</span></li>
+          </ul>
+
+          <div class="note">
+            <strong>Important:</strong> This is a vehicle-history review, not a mechanical inspection, warranty, or guarantee. Not every event is reported or available in vehicle-history records.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how">
+      <div class="container">
+        <p class="eyebrow" style="color:#1d4ed8;text-align:center">How it works</p>
+        <h2 class="title" style="text-align:center;margin-bottom:32px">Three simple steps</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div class="number">1</div>
+            <h3>Send the VIN</h3>
+            <p>Enter the 17-character VIN and the email where you want to receive your buyer review.</p>
+          </div>
+
+          <div class="step">
+            <div class="number">2</div>
+            <h3>Pay securely online</h3>
+            <p>Your payment is processed by Square directly on this page. You do not leave our website.</p>
+          </div>
+
+          <div class="step">
+            <div class="number">3</div>
+            <h3>Know what to ask</h3>
+            <p>We email the key history findings and clear questions to ask the seller before making your decision.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="buy" id="order">
+      <div class="container buygrid">
+        <aside class="pricebox">
+          <p class="eyebrow">Used Car Buyer Review</p>
+          <h2>A $25 check can help you avoid an expensive surprise.</h2>
+          <div class="price">$25</div>
+          <p>One VIN. Clear guidance. No subscription and no hidden fees.</p>
+
+          <ul class="list" style="margin-top:26px">
+            <li><span class="check">✓</span><span style="color:#e2e8f0">VIN and email only</span></li>
+            <li><span class="check">✓</span><span style="color:#e2e8f0">Easy-to-understand buyer summary</span></li>
+            <li><span class="check">✓</span><span style="color:#e2e8f0">We receive your request immediately after payment</span></li>
+          </ul>
+        </aside>
+
+        <div class="formcard">
+          <h2>Order your VIN Review</h2>
+          <p>Enter your information below, then pay securely.</p>
+
+          <form id="vinForm" novalidate>
+            <label for="vin">Vehicle VIN</label>
+            <input id="vin" name="vin" inputmode="text" autocomplete="off" maxlength="17" placeholder="17-character VIN" required>
+
+            <label for="email">Your email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+
+            <div class="turnstile-wrap">
+              <div id="turnstile"></div>
+            </div>
+
+            <div class="payment" id="card-container" aria-label="Secure card payment form"></div>
+
+            <button class="button" id="payButton" type="submit" disabled>Loading secure checkout…</button>
+
+            <p class="status" id="status" aria-live="polite"></p>
+
+            <p class="secure"><b>●</b> Secure payment processed by Square. Your card details are never sent to us.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+        <p class="eyebrow" style="color:#1d4ed8">Questions</p>
+        <h2 class="title">Before you order</h2>
+
+        <div class="faqgrid">
+          <div class="faqitem">
+            <h3>How fast will I receive it?</h3>
+            <p>We send the vehicle-history review by email after payment. Delivery time can vary based on demand and vehicle-record availability.</p>
+          </div>
+
+          <div class="faqitem">
+            <h3>Does this replace a mechanical inspection?</h3>
+            <p>No. History records cannot reveal every mechanical issue. For a local vehicle, a pre-purchase inspection is the best next step.</p>
+          </div>
+
+          <div class="faqitem">
+            <h3>What VIN do I need?</h3>
+            <p>Enter the full 17-character VIN exactly as shown on the listing, dashboard, title, or vehicle registration.</p>
+          </div>
+
+          <div class="faqitem">
+            <h3>Need a full inspection in Southwest Florida?</h3>
+            <p>We also provide independent pre-purchase inspections in Cape Coral, Fort Myers, and surrounding areas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footerin">
+      <div>
+        <strong>U.S. Auto Inspection</strong><br>
+        Inspect Before You Invest!
+      </div>
+
+      <div>
+        <a href="tel:+12396725543">(239) 672-5543</a> ·
+        <a href="mailto:mflautomotivegroup@gmail.com">mflautomotivegroup@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const API = "https://usautoinspection-booking.mflautomotivegroup.workers.dev";
+
+    const state = {
+      config: null,
+      card: null,
+      turnstileToken: "",
+      order: null
+    };
+
+    const status = document.getElementById("status");
+    const button = document.getElementById("payButton");
+
+    function message(text, type) {
+      status.textContent = text;
+      status.className = "status " + (type || "");
+    }
+
+    function validVin(vin) {
+      return /^[A-HJ-NPR-Z0-9]{17}$/.test(vin);
+    }
+
+    function validEmail(email) {
+      return /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email);
+    }
+
+    async function request(path, body) {
+      const response = await fetch(API + path, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+
+      return data;
+    }
+
+    function loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error("Unable to load secure checkout."));
+        document.head.appendChild(script);
+      });
+    }
+
+    async function setup() {
+      try {
+        const response = await fetch(API + "/vin/config");
+        state.config = await response.json();
+
+        if (!response.ok || !state.config.ok) {
+          throw new Error(state.config.error || "Online checkout is not available yet.");
+        }
+
+        await loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit");
+
+        await loadScript(
+          state.config.environment === "production"
+            ? "https://web.squarecdn.com/v1/square.js"
+            : "https://sandbox.web.squarecdn.com/v1/square.js"
+        );
+
+        const payments = window.Square.payments(
+          state.config.applicationId,
+          state.config.locationId
+        );
+
+        state.card = await payments.card();
+        await state.card.attach("#card-container");
+
+        window.turnstile.render("#turnstile", {
+          sitekey: state.config.siteKey,
+          action: "vin_review",
+          theme: "light",
+          callback: token => {
+            state.turnstileToken = token;
+            enable();
+          },
+          "expired-callback": () => {
+            state.turnstileToken = "";
+            enable();
+          },
+          "error-callback": () => {
+            state.turnstileToken = "";
+            enable();
+          }
+        });
+
+        message("Complete the security verification to continue.");
+        enable();
+      } catch (error) {
+        message(error.message, "error");
+        button.textContent = "Checkout unavailable";
+      }
+    }
+
+    function enable() {
+      const ready = state.card && state.turnstileToken;
+      button.disabled = !ready;
+      button.textContent = ready ? "Pay $25 securely" : "Complete security verification";
+    }
+
+    document.getElementById("vin").addEventListener("input", event => {
+      event.target.value = event.target.value
+        .toUpperCase()
+        .replace(/[^A-Z0-9]/g, "");
+    });
+
+    document.getElementById("vinForm").addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const vin = document.getElementById("vin").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (!validVin(vin)) {
+        message("Enter a valid 17-character VIN.", "error");
+        return;
+      }
+
+      if (!validEmail(email)) {
+        message("Enter a valid email address.", "error");
+        return;
+      }
+
+      if (!state.turnstileToken) {
+        message("Please complete the security verification.", "error");
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Preparing secure payment…";
+      message("");
+
+      try {
+        state.order = await request("/vin/orders", {
+          vin,
+          email,
+          turnstileToken: state.turnstileToken
+        });
+
+        const token = await state.card.tokenize();
+
+        if (token.status !== "OK") {
+          throw new Error("Check the card information and try again.");
+        }
+
+        button.textContent = "Processing payment…";
+
+        const paid = await request("/vin/pay", {
+          orderId: state.order.orderId,
+          accessToken: state.order.accessToken,
+          sourceId: token.token
+        });
+
+        if (paid.state === "paid") {
+          success();
+          return;
+        }
+
+        if (paid.state === "processing") {
+          message("Your payment is processing. Please do not pay again; we will email you once it is confirmed.", "ok");
+          return;
+        }
+
+        throw new Error("Payment was not completed. Please try again.");
+      } catch (error) {
+        message(error.message, "error");
+
+        if (window.turnstile) {
+          window.turnstile.reset();
+        }
+
+        state.turnstileToken = "";
+        enable();
+      }
+    });
+
+    function success() {
+      document.getElementById("vinForm").innerHTML = `
+        <div style="text-align:center;padding:26px 4px">
+          <div style="font-size:3rem;color:#16A34A">✓</div>
+          <h2 style="margin:8px 0">Payment confirmed</h2>
+          <p style="color:#475569">Thank you. We received your VIN Review request and will send your vehicle history review to the email you provided.</p>
+          <p style="font-weight:800">Please check your inbox soon.</p>
+        </div>
+      `;
+
+      track("vin_review_purchase", {
+        value: 25,
+        currency: "USD"
+      });
+    }
+
+    setup();
+  </script>
+</body>
+</html>
