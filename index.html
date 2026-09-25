@@ -5821,7 +5821,7 @@ textarea{
 
             <input
               id="email"
-              type="email"
+              type="text"
               name="email"
               placeholder="john@example.com"
               autocomplete="email"
@@ -6512,18 +6512,6 @@ async function submitBookingRequest() {
   if (!form) {
     return false;
   }
-
-
-  if (
-    !form.checkValidity()
-  ) {
-
-    form.reportValidity();
-
-    return false;
-  }
-
-
   if (
     honeypot &&
     honeypot.value.trim() !== ''
