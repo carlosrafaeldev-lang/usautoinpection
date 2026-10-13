@@ -3463,6 +3463,45 @@ textarea{
     font-size:1.05rem;
   }
 }
+
+/* Used Car Buyer Assistant — featured in Our Services */
+.buyer-tools-promo{
+  margin-top:26px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  padding:30px 34px;
+  border-radius:24px;
+  background:linear-gradient(120deg, #0B1220 0%, #123B7A 100%);
+  border:1px solid rgba(147,197,253,.28);
+  box-shadow:0 18px 42px rgba(11,18,32,.13);
+}
+.buyer-tools-promo-content{max-width:690px;}
+.buyer-tools-badge{
+  display:inline-flex;
+  padding:6px 12px;
+  border:1px solid rgba(255,255,255,.32);
+  border-radius:999px;
+  color:#FEE2E2;
+  font-size:.73rem;
+  font-weight:900;
+  letter-spacing:.09em;
+}
+.buyer-tools-promo h3{
+  color:#fff;
+  font-size:clamp(1.35rem,2.5vw,1.85rem);
+  line-height:1.2;
+  margin:14px 0 10px;
+}
+.buyer-tools-promo p{color:#E2E8F0;line-height:1.65;margin:0;}
+.buyer-tools-promo .buyer-tools-footnote{margin-top:10px;color:#CBD5E1;font-size:.84rem;}
+.buyer-tools-promo-cta{flex-shrink:0;white-space:nowrap;text-align:center;}
+@media (max-width:900px){
+  .buyer-tools-promo{flex-direction:column;align-items:stretch;padding:25px 22px;}
+  .buyer-tools-promo-cta{width:100%;white-space:normal;}
+}
+
 </style>
 
 <script
@@ -3628,6 +3667,15 @@ textarea{
         Services
       </a>
 
+      <a
+        href="https://app.usautoinspection.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackAction('buyer_assistant_click', 'engagement', { cta_location: 'desktop_nav' })"
+      >
+        Buyer Tools
+      </a>
+
       <a href="#sample-reports">
         Samples
       </a>
@@ -3726,6 +3774,15 @@ textarea{
       onclick="toggleMobileMenu(false)"
     >
       Services
+    </a>
+
+    <a
+      href="https://app.usautoinspection.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      onclick="trackAction('buyer_assistant_click', 'engagement', { cta_location: 'mobile_menu' }); toggleMobileMenu(false)"
+    >
+      Free Buyer Tools
     </a>
 
     <a
@@ -4924,6 +4981,33 @@ textarea{
 
       </div>
 
+    </div>
+
+
+    <!-- Used Car Buyer Assistant: free companion tools for nationwide buyers -->
+    <div class="buyer-tools-promo">
+      <div class="buyer-tools-promo-content">
+        <span class="buyer-tools-badge">NEW · FREE ONLINE TOOLS</span>
+        <h3>Meet Used Car Buyer Assistant</h3>
+        <p>
+          Shopping for a used vehicle? Explore our free VIN Decoder,
+          payment and deal calculator, 22-point buyer checklist,
+          and model-level recall information before you buy.
+        </p>
+        <p class="buyer-tools-footnote">
+          Powered by U.S. Auto Inspection · Available nationwide.
+          Online tools do not replace an independent vehicle inspection.
+        </p>
+      </div>
+      <a
+        class="btn btn-primary buyer-tools-promo-cta"
+        href="https://app.usautoinspection.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackAction('buyer_assistant_click', 'engagement', { cta_location: 'services_promo' })"
+      >
+        Explore Free Buyer Tools ↗
+      </a>
     </div>
 
 
@@ -6151,6 +6235,17 @@ textarea{
           <li>
             <a href="#our-services">
               Services
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://app.usautoinspection.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackAction('buyer_assistant_click', 'engagement', { cta_location: 'footer' })"
+            >
+              Free Buyer Tools
             </a>
           </li>
 
